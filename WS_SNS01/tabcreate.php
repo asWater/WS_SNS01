@@ -31,5 +31,22 @@
 			       INDEX(sender(10)),
 			       INDEX(receiver(10))');
 
+	createTable_L('friends',
+				  'user VARCHAR(16),
+				   friend VARCHAR(16),
+				   INDEX(user(10)),
+				   INDEX(friend(10))');
+
+	createTable_L('profiles',
+				  'user VARCHAR(16),
+				   intro VARCHAR(4096),
+				   image MEDIUMBLOB,
+				   INDEX(user(10))');
+
 	?>
+
+	<br /> ...Done.
+	</body>
+</html>
+
 
