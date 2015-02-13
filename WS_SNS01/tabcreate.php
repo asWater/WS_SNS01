@@ -1,4 +1,5 @@
 
+<!DOCTYPE html>
 <html>
 	<head>
 		<title> Setting up database (create tables)</title>
@@ -10,13 +11,13 @@
 	<?php
 	require_once "functions.php";
 
-	createTable_L('members', 
-				  'id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY 
+	createTable_L('members',
+				  'id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				   user VARCHAR(16) NOT NULL,
-				   pass VARCHAR(64) NOT NULL, 
+				   pass VARCHAR(64) NOT NULL,
 				   email VARCHAR(255) NOT NULL,
 				   modified DATETIME,
-				   created DATATIME NOT NULL,
+				   created DATETIME NOT NULL,
 				   lastlogin DATETIME,
 				   INDEX(user(10)),
 				   INDEX(email(18))');
@@ -45,7 +46,7 @@
 
 	?>
 
-	<br /> ...Done.
+	<br> ...Done.
 	</body>
 </html>
 

@@ -15,7 +15,7 @@ $connection = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 if ($connection->connect_error) die($connection->connect_error);
 
 /**
- * [createTable description]
+ * [createTable_L description]
  * @param  [type] $tabName [description]
  * @param  [type] $query   [description]
  * @return [type]          [description]
@@ -26,7 +26,7 @@ if ($connection->connect_error) die($connection->connect_error);
  */
 function createTable_L($tabName, $query)
 {
-	queryMysql_L("CREATE TABLE IF NOT EXIST $tabName($query)");
+	queryMysql_L("CREATE TABLE IF NOT EXISTS $tabName($query)");
 	echo "Table '$tabName' was created or already exists. <br>";
 }
 
