@@ -1,3 +1,4 @@
+
 function checkUser_L(user)
 {
 	if (user.value == '')
@@ -6,20 +7,20 @@ function checkUser_L(user)
 		return
 	}
 
-	params = "user" + user.value
+	params = "user=" + user.value
 	request = new ajaxRequest_L()
 	request.open("POST", "checkuser.php", true)
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 	request.setRequestHeader("Content-length", params.length)
-	reqeust.setRequestHeader("Connection", "close")
+	request.setRequestHeader("Connection", "close")
 
-	reqeust.onreadystatechange = function()
+	request.onreadystatechange = function()
 	{
-		if (this.readyState == 4)
+		if (this.readyState == 4)	// 1: Reading, 2: Finish reading, 3: Analyzing data, 4: Finish analyzing data 
 		{
-			if (this.status == 200)
+			if (this.status == 200)	// HTTP status: 200 = OK.
 			{
-				if (this.responseText != null)
+				if (this.responseText != null)	// Text data replied by the server.
 				{
 					O('info').innerHTML = this.responseText
 				}

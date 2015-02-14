@@ -2,7 +2,8 @@
 
 session_start();	// This sencentece is need to be callded before HTML output.
 
-echo "<!DOCTYPE html>\n<html><head><script src='OSC.js'></script>";
+echo "<!DOCTYPE html>\n<html><head>";
+//echo "<!DOCTYPE html>\n<html><head><script src='OSC.js'></script>";
 
 require_once 'functions.php';
 
@@ -19,10 +20,23 @@ else
 	$loggedIn = FALSE;
 }
 
-echo "<title>$appName$userStr</title><link rel='stylesheet'" .
-	 "href='styles.css' type='text/css' />" .
-	 "</head><body><div class='appname'> $appName$userStr</div>";
+echo <<<_END
+	<title>$appName$userStr</title>
+	<link rel='stylesheet' href='styles.css' type='text/css' />
+	</head>
+	<body>
+	<div class='appname'>$appName$userStr</div>
+	<script src='OSC.js'></script>
+	<script src='checkuser.js'></script>
+_END;
+//	 <script src='OSC.js'></script> <script src='checkuser.js'></script>
 
+/*
+echo "<title>$appname$userstr</title><link rel='stylesheet' " .
+     "href='styles.css' type='text/css' />" .
+     "</head><body><div class='appname'>$appname$userstr</div>" .
+     "<script src='OSC.js'></script>";
+*/
 if ($loggedIn)
 {
 	echo "<br><ul class='menu'>" .
@@ -45,4 +59,3 @@ else
 }
 
 ?>
-
