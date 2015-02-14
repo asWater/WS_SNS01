@@ -2,7 +2,7 @@
 
 session_start();	// This sencentece is need to be callded before HTML output.
 
-echo "<!DOCTYPE html>¥n<html><head><<script src='OSC.js'></<script>";
+echo "<!DOCTYPE html>\n<html><head><script src='OSC.js'></script>";
 
 require_once 'functions.php';
 
