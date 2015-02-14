@@ -29,14 +29,7 @@ echo <<<_END
 	<script src='OSC.js'></script>
 	<script src='checkuser.js'></script>
 _END;
-//	 <script src='OSC.js'></script> <script src='checkuser.js'></script>
 
-/*
-echo "<title>$appname$userstr</title><link rel='stylesheet' " .
-     "href='styles.css' type='text/css' />" .
-     "</head><body><div class='appname'>$appname$userstr</div>" .
-     "<script src='OSC.js'></script>";
-*/
 if ($loggedIn)
 {
 	echo "<br><ul class='menu'>" .

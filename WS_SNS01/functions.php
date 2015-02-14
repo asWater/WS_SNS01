@@ -1,5 +1,7 @@
 <?php //functions.php
 
+define ("SALTWORD", "!john#paul%george&ringo");
+
 $dbHost  = 'localhost';
 $dbName  = 'WSDB';
 $dbUser  = 'root';
