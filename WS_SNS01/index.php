@@ -16,7 +16,7 @@
 ?>
 
 <!--
-Following parts are closure of corresponding parts written in "header.php".
+Following parts are closures of corresponding parts written in "header.php".
 -->
 	</span><br><br>
 	</body>
