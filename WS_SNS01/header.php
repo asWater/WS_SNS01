@@ -27,7 +27,7 @@ echo <<<_END
 	<body>
 	<div class='appname'>$appName$userStr</div>
 	<script src='OSC.js'></script>
-	<script src='checkuser.js'></script>
+	<script src='checkSignup.js'></script>
 _END;
 
 if ($loggedIn)
