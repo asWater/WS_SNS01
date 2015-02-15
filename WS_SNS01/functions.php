@@ -6,7 +6,7 @@ $dbHost  = 'localhost';
 $dbName  = 'WSDB';
 $dbUser  = 'root';
 $dbPass  = 'test1234';	//Need to do something
-$appName = "Small Network";
+$appName = "Tiny Network";
 
 /* mysql is Obsolete. msyqli should be used.
 mysql_connect($dbHost, $dbUser, $dbPass) or die(mysql_error());
