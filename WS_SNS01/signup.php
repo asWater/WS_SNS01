@@ -68,9 +68,9 @@ if (isset($_POST['user']))
             $pass = hashPass_L($pass);
             $dt = currentDateTime_L();
 
-            echo "$pass <br>";
-            echo "$dt <br>";
-            //exit(1);
+            //echo "$pass <br>";
+            //echo "$dt <br>";
+            exit(1);
 
             queryMysql_L("INSERT INTO members (user, pass, email, created) VALUE('$user', '$pass', '$email', '$dt')");
             die("<h4>Account created</h4>Please log in.<br><br>");
