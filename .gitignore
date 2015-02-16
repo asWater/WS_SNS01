@@ -15,4 +15,5 @@ sftp-config.json
 
 #Unkown Type
 .DS_Store
+.phpintel*
 
