@@ -5,7 +5,8 @@ require_once('header.php');
 if(isset($_SESSION['user']))
 {
 	destroySession_L();
-	echo "<div class='main'>You have been logged out. Please <a href='index.php'>Click here</a> to refresh the screen.";
+	//echo "<div class='main'>You have been logged out. Please <a href='index.php'>Click here</a> to refresh the screen.";
+	header("location: index.php");
 }
 else
 {
@@ -19,3 +20,4 @@ else
 </div>
 </body>
 </html>
+
