@@ -46,7 +46,7 @@ echo <<<_END
 <form method='post' action='login.php'><font color=#ff0000> $error </font>
 <span class='fieldname'>User Name</span><input type='text' maxlength='16' name='user' value='$user'><br>
 <span class='fieldname'>Password</span><input type='password' maxlength='32' name='pass' value='$pass'><br>
-_END
+_END;
 ?>
 
 <br>
