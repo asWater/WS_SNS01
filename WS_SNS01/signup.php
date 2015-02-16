@@ -63,7 +63,8 @@ if (isset($_POST['user']))
         }
         else
         {
-            echo "passed several check<br>";
+            echo "Passed several checks<br>";
+            echo "Currently Sign-up is disabled";
 
             $pass = hashPass_L($pass);
             $dt = currentDateTime_L();
