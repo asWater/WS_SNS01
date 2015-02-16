@@ -114,7 +114,7 @@ _END;
 ?>
 
     <span class='fieldname'>&nbsp;</span>
-    <input type='submit' value='Sign up'>
+    <input id='submit_button' type='submit' value='Sign up'>
     </form></div><br>
   </body>
 </html>
