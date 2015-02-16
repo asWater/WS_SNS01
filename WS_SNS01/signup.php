@@ -52,7 +52,8 @@ if (isset($_POST['user']))
         {
             $error = "Password confirmation was failed.<br><br>";
         }
-        elseif (!preg_match("/[0-9a-z!#\$%\&'\*\+\/\=\?\^\|\-\{\}\.]+@[0-9a-z!#\$%\&'\*\+\/\=\?\^\|\-\{\}\.]+/" , $email))
+        //elseif (!preg_match("/[0-9a-z!#\$%\&'\*\+\/\=\?\^\|\-\{\}\.]+@[0-9a-z!#\$%\&'\*\+\/\=\?\^\|\-\{\}\.]+/" , $email))
+        elseif (!preg_match('|^[0-9a-z_./?-]+@([0-9a-z-]+\.)+[0-9a-z-]+$|', $email))
         {
             $error = "Invalid e-mail address<br><br>";
         }
@@ -63,10 +64,10 @@ if (isset($_POST['user']))
         else
         {
             echo "passed several check<br>";
-            
+
             $pass = hash('sha256', $pass.SALTWORD);
             $dt = currentDateTime_L();
-            
+
             echo $pass;
             echo $dt;
             exit(1);
@@ -80,11 +81,11 @@ if (isset($_POST['user']))
 function currentDateTime_L()
 {
 
-    try 
+    try
     {
         $date = new DateTime();
-    } 
-    catch (Exception $e) 
+    }
+    catch (Exception $e)
     {
         echo $e->getMessage();
         exit(1);
