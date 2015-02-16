@@ -81,4 +81,26 @@ function showProfile_L($user)
 	}
 }
 
+function hashPass_L($pass)
+{
+	$pass = hash('sha256', $pass.SALTWORD);
+	return $pass;
+}
+
+function currentDateTime_L()
+{
+	// If [date.timezone = "Asia/Tokyo"] is not set in "php.ini" file at the server side, this will issue the error.
+    try
+    {
+        $date = new DateTime();
+    }
+    catch (Exception $e)
+    {
+        echo $e->getMessage();
+        exit(1);
+    }
+
+    return $date->format('Y-m-d H:i:s');
+}
+
 ?>

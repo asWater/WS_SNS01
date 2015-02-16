@@ -65,33 +65,17 @@ if (isset($_POST['user']))
         {
             echo "passed several check<br>";
 
-            $pass = hash('sha256', $pass.SALTWORD);
+            $pass = hashPass_L($pass);
             $dt = currentDateTime_L();
 
-            echo $pass;
-            echo $dt;
+            echo "$pass <br>";
+            echo "$dt <br>";
             exit(1);
 
             queryMysql_L("INSERT INTO members (user, pass, email, created) VALUE('$user', '$pass', '$email', '$dt')");
             die("<h4>Account created</h4>Please log in.<br><br>");
         }
     }
-}
-
-function currentDateTime_L()
-{
-
-    try
-    {
-        $date = new DateTime();
-    }
-    catch (Exception $e)
-    {
-        echo $e->getMessage();
-        exit(1);
-    }
-
-    return $date->format('Y-m-d H:i:s');
 }
 
 
