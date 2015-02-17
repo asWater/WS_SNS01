@@ -53,15 +53,19 @@ if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name']))
 	move_uploaded_file($_FILES['image']['tmp_name'], $saveTo);
 
 	$imageTmp = $_FILES['image']['tmp_name'];
-	echo "imageTmp = $imageTmp";
+	
+	echo "imageTmp = $imageTmp<br>";
+	$gottenFile = file_get_contents($imageTmp);
+	echo "gottenFile = $gottenFile<br>";
 
 	$typeOK = TRUE;
 
-	echo "saveto = $saveTo<br>";
 	$mimeType = (string)$_FILES['image']['type'];
+	
 	echo "filetype = $mimeType<br>";
+	echo "saveTo = $saveTo<br>";
 
-	switch($mimeType)
+	switch($_FILES['image']['type'])
 	{
 		case "image/gif": 
 			$src = imagecreatefromgif($saveTo);
@@ -69,10 +73,10 @@ if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name']))
 		case "image/jpeg": // Both regular and progressive jpegs.
 		case "image/pjpeg": 
 			$src = imagecreatefromjpeg($saveTo);
+			echo "jpeg was selected<br>"; 
 			break;
 		case "image/png": 
 			$src = imagecreatefrompng($saveTo);
-			echo "png was selected<br>"; 
 			break;
 		default: 
 			$typeOK = FALSE;
@@ -118,13 +122,17 @@ if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name']))
 		//ImageConvolutionに渡す3x3のコンボリューション行列(畳み込み配列)を調整して画像をシャープにする方法です。
 		imageconvolution($tmp, array(array(-1, -1, -1), array(-1, 16, -1), array(-1, -1, -1)), 8, 0);
 		
+		echo "src = $src<br>";
+		echo "tmpImage = $tmp<br>";
 		//画像をブラウザあるいはファイルに出力する。
 		//imagejpeg($tmp, $saveTo);
 
 		//Saving image data to DB.
-		$imgBin = mysqli_real_escape_string($connection, $tmp);
+		//$imgBin = mysqli_real_escape_string($connection, $tmp);
+		$imgBin = mysqli_real_escape_string($connection, $gottenFile);
 
 		echo "mysqli_real_escape_string was finished.<br>";
+		echo "imgBin = $imgBin<br>";
 
 		$result2 = queryMysql_L("SELECT * FROM profiles WHERE user='$user'");
 

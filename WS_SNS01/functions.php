@@ -75,9 +75,12 @@ function showProfile_L($user)
 
 	if ($result->num_rows)
 	{
+		echo "showProfile_L was called and profile for the user was found in DB.<br>";
 		$row = $result->fetch_array(MYSQLI_ASSOC);
-		//header( 'Content-Type: image/jpeg' );
-		echo '<img src="'.$row['image'].'">';
+		//header('Content-Type: image/jpeg');
+		$rowImage = $row['image'];
+		echo "rowImage = $rowImage<br>";
+		echo "<img src='$rowImage' style='float:left;'>";
 		echo stripslashes($row['intro']) . "<br style='clear:left;'><br>";
 	}
 }
