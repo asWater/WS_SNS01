@@ -76,6 +76,7 @@ function showProfile_L($user)
 	if ($result->num_rows)
 	{
 		$row = $result->fetch_array(MYSQLI_ASSOC);
+		//header( 'Content-Type: image/jpeg' );
 		echo '<img src="'.$row['image'].'">';
 		echo stripslashes($row['intro']) . "<br style='clear:left;'><br>";
 	}
