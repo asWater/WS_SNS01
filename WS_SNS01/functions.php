@@ -1,6 +1,6 @@
 <?php //functions.php
 
-define ("SALTWORD", "!john#paul%george&ringo");
+define("SALTWORD", "!john#paul%george&ringo");
 
 $dbHost  = 'localhost';
 $dbName  = 'WSDB';
@@ -10,7 +10,7 @@ $appName = "Tiny Network";
 
 /* mysql is Obsolete. msyqli should be used.
 mysql_connect($dbHost, $dbUser, $dbPass) or die(mysql_error());
-mysql_select_db($dbName) or die(mysql_error()); 
+mysql_select_db($dbName) or die(mysql_error());
 */
 
 $connection = new mysqli($dbHost, $dbUser, $dbPass, $dbName);

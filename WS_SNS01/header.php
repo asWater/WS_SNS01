@@ -33,7 +33,7 @@ _END;
 if ($loggedIn)
 {
 	echo "<br><ul class='menu'>" .
-		 "<li><a href='members.php?view=$user'>Home</a></li>" . 
+		 "<li><a href='members.php?view=$user'>Home</a></li>" .
 		 "<li><a href='members.php'>Members</a></li>" .
 		 "<li><a href='friends.php'>Friends</a></li>" .
 		 "<li><a href='profile.php'>Edit Profile</a></li>" .
@@ -46,7 +46,7 @@ else
 		  "<li><a href='index.php'>Home</a></li>" .
 		  "<li><a href='signup.php'>Sign up</a></li>" .
 		  "<li><a href='login.php'>Log in</a></li>" .
-		  "</ul><br />" . 
+		  "</ul><br />" .
 		  "<span class='info'>&#8658; You must be logged in to " .
 		  "View this page.</span><br /><br />");
 }
