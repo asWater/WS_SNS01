@@ -16,17 +16,15 @@ if (isset($_POST['text']) && !empty($_POST['text']))
 	$profText = sanitizeString_L($_POST['text']);
 	$profText = preg_replace('/\s\s+/', ' ', $profText); // Replace consecutive spaces to 1 space. "\s" means space.
 
-echo "proftext = $profText<br>";
-
 	if ($result->num_rows)
 	{
 		queryMysql_L("UPDATE profiles SET intro='$profText' WHERE user='$user'");
-		echo "Profile text was updated.<br>";
+		//echo "Profile text was updated.<br>";
 	}
 	else
 	{
 		queryMysql_L("INSERT INTO profiles (user, intro) VALUES ('$user', '$profText')");
-		echo "Profile text was inserted.<br>";
+		//echo "Profile text was inserted.<br>";
 	}
 }
 else
@@ -47,47 +45,30 @@ $profText = stripslashes(preg_replace('/\s\s+/', ' ', $profText));
 if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name']))
 {
 	$imageName = $_FILES['image']['name'];
-echo "image & name was set in FILES: $imageName<br>";
-
-	$saveTo = "$user.jpg";
-
 	$imageTmp = $_FILES['image']['tmp_name'];
-	$gottenFile = file_get_contents($imageTmp);
-	//echo "gottenFile = $gottenFile<br>";
-
-	move_uploaded_file($_FILES['image']['tmp_name'], $saveTo);
-echo "imageTmp = $imageTmp<br>";
 
 	$typeOK = TRUE;
-
-	$mimeType = (string)$_FILES['image']['type'];
-
-echo "filetype = $mimeType<br>";
-echo "saveTo = $saveTo<br>";
 
 	switch($_FILES['image']['type'])
 	{
 		case "image/gif":
-			$src = imagecreatefromgif($saveTo);
+			$src = imagecreatefromgif($imageTmp);
 			break;
 		case "image/jpeg": // Both regular and progressive jpegs.
 		case "image/pjpeg":
-			$src = imagecreatefromjpeg($saveTo);
-			echo "jpeg was selected<br>";
+			$src = imagecreatefromjpeg($imageTmp);
 			break;
 		case "image/png":
-			$src = imagecreatefrompng($saveTo);
+			$src = imagecreatefrompng($imageTmp);
 			break;
 		default:
 			$typeOK = FALSE;
 			break;
 	}
 
-echo "typeOK = $typeOK<br>";
-
 	if ($typeOK)
 	{
-		list($w, $h) = getimagesize($saveTo);
+		list($w, $h) = getimagesize($imageTmp);
 
 		$max = 100;
 		$tw = $w;
@@ -122,29 +103,30 @@ echo "typeOK = $typeOK<br>";
 		//ImageConvolutionに渡す3x3のコンボリューション行列(畳み込み配列)を調整して画像をシャープにする方法です。
 		imageconvolution($tmp, array(array(-1, -1, -1), array(-1, 16, -1), array(-1, -1, -1)), 8, 0);
 
-	echo "src = $src<br>";
-	echo "tmpImage = $tmp<br>";
 		//画像をブラウザあるいはファイルに出力する。
 		//imagejpeg($tmp, $saveTo);
+		
+		//Changing the resource ID to binaray data with using buffer.
+		ob_start();
+		imagejpeg($tmp, null, 75); 
+		$imgBin = ob_get_clean();
 
 		//Saving image data to DB.
-		//$imgBin = mysqli_real_escape_string($connection, $tmp);
-		$imgBin = mysqli_real_escape_string($connection, $gottenFile);
+		$imgBin = mysqli_real_escape_string($connection, $imgBin);
 
-	echo "mysqli_real_escape_string was finished.<br>";
-		//echo "imgBin = $imgBin<br>";
+	//echo "Image Binary: $imgBin";
 
 		$result2 = queryMysql_L("SELECT * FROM profiles WHERE user='$user'");
 
 		if ($result2->num_rows)
 		{
 			queryMysql_L("UPDATE profiles SET image='$imgBin' WHERE user='$user'");
-			echo "Image file was updated.<br>";
+			//echo "Image file was updated.<br>";
 		}
 		else
 		{
 			queryMysql_L("INSERT INTO profiles (user, image) VALUES ('$user', '$imgBin')");
-			echo "Image file was inserted.<br>";
+			//echo "Image file was inserted.<br>";
 		}
 
 		//imagedestroy() は画像 image を保持するメモリを解放します。
