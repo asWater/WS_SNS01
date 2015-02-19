@@ -81,7 +81,7 @@ for ($j = 0; $j < $num; $j++)
 
 	if (!$following)
 	{
-		echo "[a href='members.php?add=" . $row['user'] . "'>$follow</a>]";
+		echo "[<a href='members.php?add=" . $row['user'] . "'>$follow</a>]";
 	}
 	else
 	{
