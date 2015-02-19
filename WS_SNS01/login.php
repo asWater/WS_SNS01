@@ -35,7 +35,7 @@ if (isset($_POST['user']))
 
 			// Session data set 
 			$_SESSION['user'] = $user;
-			$_SESSION['pass'] = $pass;
+			//$_SESSION['pass'] = $pass;
 
 			header("location: index.php");
 			//die("You are now logged in. Please <a href='members.php?view=$user'> Click Here <a/> to continue.<br><br>");
@@ -46,7 +46,7 @@ if (isset($_POST['user']))
 echo <<<_END
 <form method='post' action='login.php'><font color=#ff0000> $error </font>
 <span class='fieldname'>User Name</span><input type='text' maxlength='16' name='user' value='$user'><br>
-<span class='fieldname'>Password</span><input type='password' maxlength='32' name='pass' value='$pass'><br>
+<span class='fieldname'>Password</span><input type='password' maxlength='32' name='pass'><br>
 _END;
 ?>
 
