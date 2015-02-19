@@ -21,7 +21,7 @@ if ($loggedIn)
 	$result = queryMysql_L("SELECT * FROM friends WHERE user = '$user'");
 	if (!$result->num_rows)
 	{
-		echo "<p><span class='main'>&#9758; You have no friend. What about finding <a href='members.php'>friends</a>?</span></p>";
+		echo "<p><span class='main'>&#9758; You have no friends. What about finding <a href='members.php'>friends</a>?</span></p>";
 	}
 }
 else
