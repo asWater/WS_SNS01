@@ -64,14 +64,15 @@ if (isset($_POST['user']))
         else
         {
             echo "Passed several checks<br>";
-            echo "Currently Sign-up is disabled";
 
             $pass = hashPass_L($pass);
             $dt = currentDateTime_L();
 
             //echo "$pass <br>";
             //echo "$dt <br>";
-            exit(1);
+            
+            //echo "Currently Sign-up is disabled<br>";
+            //exit(1);
 
             queryMysql_L("INSERT INTO members (user, pass, email, created) VALUE('$user', '$pass', '$email', '$dt')");
             die("<h4>Account created</h4>Please log in.<br><br>");
