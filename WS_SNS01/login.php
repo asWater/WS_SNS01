@@ -37,7 +37,8 @@ if (isset($_POST['user']))
 			$_SESSION['user'] = $user;
 			$_SESSION['pass'] = $pass;
 
-			die("You are now logged in. Please <a href='members.php?view=$user'> Click Here <a/> to continue.<br><br>");
+			header("location: index.php");
+			//die("You are now logged in. Please <a href='members.php?view=$user'> Click Here <a/> to continue.<br><br>");
 		}
 	}
 }
@@ -49,9 +50,11 @@ echo <<<_END
 _END;
 ?>
 
-<br>
 <span class='fieldname'>&nbsp;</span>
-<input type='submit' value='Log In'>
+<input id='submit_button' type='submit' value='Log In'>
+<br>
+<br>
+<span class='warning'><p>&#9758; If you don't have the user, please <strong><a href='signup.php'>Sign Up</a></strong> now.</p></span>
 </form>
 <br>
 </div>

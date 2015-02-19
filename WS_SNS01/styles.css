@@ -6,9 +6,9 @@
 }
 
 body {
-  width     :750px;
+  width     :800px;
   margin    :20px auto;
-  background:#f8f8f8;
+  background:#fff;
   border    :1px solid #888;
 }
 
@@ -34,8 +34,8 @@ li a:hover, .button:hover {
 
 .appname {
   text-align :center;
-  background :#eb8;
-  color      :#40d;
+  background :#000;
+  color      :#f00;
   font-family:verdana;
   font-size  :20pt;
   padding    :4px;
@@ -50,10 +50,10 @@ li a:hover, .button:hover {
   margin-left:40px;
 }
 
-.info {
-  background :lightgreen;
+.info 
+{
   color      :blue;
-	border     :1px solid green;
+	border     :1px solid blue;
 	padding    :5px 10px;
   margin-left:40px;
 }
@@ -97,7 +97,7 @@ li a:hover, .button:hover {
 
 input#submit_button
 {
-    border-top: 1px solid #ccc;
+  border-top: 1px solid #ccc;
   border-right: 1px solid #999;
   border-bottom: 1px solid #999;
   border-left: 1px solid #ccc;
@@ -106,11 +106,11 @@ input#submit_button
   cursor: pointer;
   color: #666;
   margin-right: 8px;
-      -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #aaa;
-    -webkit-box-shadow: 1px 1px 2px #E7E7E7;
-    -moz-box-shadow: 1px 1px 2px #E7E7E7;
+  text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #aaa;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 2px #E7E7E7;
+  -moz-box-shadow: 1px 1px 2px #E7E7E7;
   background: -moz-linear-gradient(top, #fff, #F1F1F1 1%, #F1F1F1 50%, #DFDFDF 99%, #ccc);
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.01, #F1F1F1), color-stop(0.5, #F1F1F1), color-stop(0.99, #DFDFDF), to(#ccc));
 }
@@ -121,6 +121,11 @@ input#submit_button
 
 .taken, .error {
   color:red;
+}
+
+.warning
+{
+  color:darkorange;
 }
 
 .available {

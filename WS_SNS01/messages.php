@@ -25,13 +25,15 @@ if (isset($_POST['text']))
 		queryMysql_L("INSERT INTO messages (sender, receiver, privacy, time, message) VALUES ('$user', '$view', '$privacy', '$time', '$text')");
 		echo "To: $view <br>";
 		echo "From: $user <br>";
-		if($privacy) echo "Privacy: On<br>";
-		echo "Message was sent.<br>";
+		if ($privacy) echo "Privacy: On<br>"; else echo "Privacy: Off<br>";
+		echo "Message was sent.<br><br>";
 	}
 }
 
 if ($view != "")
 {
+	echo "<div class='main'>";
+
 	if ($view == $user)
 	{
 		$name1 = $name2 = "Your";
@@ -40,20 +42,20 @@ if ($view != "")
 	{
 		$name1 = "<a href='members.php?view=$view'>$view</a>'s";
 		$name2 = "$view's";
+
+		showProfile_L($view);
+
+		echo <<<_END
+	      <form method='post' action='messages.php?view=$view'>
+	      Type here to leave a message:<br>
+	      <textarea name='text' cols='40' rows='3'></textarea><br>
+	      Public<input type='radio' name='privacy' value='0' checked='checked'>
+	      Private<input type='radio' name='privacy' value='1'>
+	      <input type='submit' value='Post Message'></form><br>
+_END;
 	}
 
-	echo "<div class='main'><h3>$name1 Messages</h3>";
-
-	showProfile_L($view);
-
-	echo <<<_END
-      <form method='post' action='messages.php?view=$view'>
-      Type here to leave a message:<br>
-      <textarea name='text' cols='40' rows='3'></textarea><br>
-      Public<input type='radio' name='privacy' value='0' checked='checked'>
-      Private<input type='radio' name='privacy' value='1'>
-      <input type='submit' value='Post Message'></form><br>
-_END;
+	echo "<h3>$name1 Messages</h3>";
 
 	if (isset($_GET['erase']))
 	{

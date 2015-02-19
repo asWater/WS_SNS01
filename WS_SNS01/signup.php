@@ -63,7 +63,7 @@ if (isset($_POST['user']))
         }
         else
         {
-            echo "Passed Signup Checks<br>";
+            echo "<span class='available'>Passed Signup Checks &#x2714; </span><br>";
 
             $pass = hashPass_L($pass);
             $dt = currentDateTime_L();
@@ -75,14 +75,15 @@ if (isset($_POST['user']))
             //exit(1);
 
             queryMysql_L("INSERT INTO members (user, pass, email, created) VALUES ('$user', '$pass', '$email', '$dt')");
-            die("<h4>Account created</h4>Please log in.<br><br>");
+
+            die("<h4>Account created.</h4><br><p><h2>&#x27A0; Please <a href='login.php'>log in</a> to start.</h2></p>");
         }
     }
 }
 
 
 echo <<<_END
-<form id='signup' method='post' action='signup.php'><font color=#ff0000> $error </font>
+<form id='signup' method='post' action='signup.php'><span class='error'> $error </span>
 
 <span class='fieldname'>Username</span>
 <input type ='text' maxlength='16' name='user' value='$user' onkeyup='checkUser_L(this)' onblur='checkUser_L(this)'/><span id='userInfo'></span><br>

@@ -27,7 +27,7 @@
 			       sender VARCHAR(16),
 			       receiver VARCHAR(16),
 			       privacy CHAR(1),
-			       time INT UNSIGNED,
+			       time DATETIME,
 			       message VARCHAR(4096),
 			       INDEX(sender(10)),
 			       INDEX(receiver(10))');

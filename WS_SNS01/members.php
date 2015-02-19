@@ -13,6 +13,7 @@ if (isset($_GET['view']))
 	if ($view == $user)
 	{
 		$name = "Your";
+		echo "<p><a class='button' href='profile.php'>Edit Profile</a></p><br>";
 	}
 	else
 	{
@@ -23,7 +24,7 @@ if (isset($_GET['view']))
 
 	showProfile_L($view);
 
-	echo "<a class='button' href='messages.php?view=$view'>View $name messages</a><br><br>";
+	echo "<p><a class='button' href='messages.php?view=$view'>View $name messages</a></p><br><br>";
 
 	die("</div></body></html>");
 }
@@ -42,7 +43,7 @@ if (isset($_GET['add']))
 elseif (isset($_GET['remove']))
 {
 	$remove = sanitizeString_L($_GET['remove']);
-	queryMysql_L("DELETE FROM friends WHERE user='$remove' AND firend='$user'");
+	queryMysql_L("DELETE FROM friends WHERE user='$remove' AND friend='$user'");
 }
 
 $result = queryMysql_L("SELECT user FROM members ORDER BY user");
