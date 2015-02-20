@@ -136,6 +136,13 @@ $(document).ready(function()
 		// Event listeners
 		$(window).startEvent(function(e)
 		{
+			//Special process for smartphone.
+			if (!e.pageX)
+			{
+				e = event.touches[0];
+				$(this).data("e",e);	//for touchend event.
+			}
+
 			if (!playerSelected && (player.x == playerOriginalX) && (player.y == playerOriginalY))
 			{
 				var canvasOffset = canvas.offset();
@@ -164,6 +171,13 @@ $(document).ready(function()
 
 		$(window).moveEvent(function(e)	//"touchmove" for smartphone.
 		{
+			//Special process for smartphone.
+			if (!e.pageX)
+			{
+				e = event.touches[0];
+				$(this).data("e",e);	//for touchend event.
+			}
+
 			if (playerSelected)
 			{
 				var canvasOffset = canvas.offset();
@@ -190,6 +204,14 @@ $(document).ready(function()
 
 		$(window).endEvent(function(e)	//"touchend" for smartphone.
 		 {
+			//Special process for smartphone.
+			//"touchend" does not return event information, so special handligng is necessary.
+			//Therfore some trics on touchstart/touchmove events.
+			if (!e.pageX)
+			{
+				e = $(this).data("e");
+			}
+
 			if (playerSelected)
 			{
 				var dX = powerX - player.x;
