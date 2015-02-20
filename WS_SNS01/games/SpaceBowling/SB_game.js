@@ -55,6 +55,22 @@ $(document).ready(function()
 		this.player = false;
 	}
 
+	//Distinguish Event handler based on terminal types.
+	var ua = navigator.userAgent;
+
+	if(ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1 || ua.indexOf('iPod')  > -1)
+	{
+		var startEvent = "touchstart";
+		var moveEvent  = "touchmove";
+		var endEvent   = "touchend";
+	}
+	else
+	{
+		var startEvent = "mousedown";
+		var moveEvent  = "mousemove";
+		var endEvent   = "mouseup";
+	}
+
 
 	// Initialize the game environment
 	function init()
@@ -118,7 +134,7 @@ $(document).ready(function()
 		uiStats.show();
 
 		// Event listeners
-		$(window).mousedown(function(e)
+		$(window).startEvent(function(e)
 		{
 			if (!playerSelected && (player.x == playerOriginalX) && (player.y == playerOriginalY))
 			{
@@ -146,7 +162,7 @@ $(document).ready(function()
 			};
 		});
 
-		$(window).mousemove(function(e)
+		$(window).moveEvent(function(e)	//"touchmove" for smartphone.
 		{
 			if (playerSelected)
 			{
@@ -172,7 +188,7 @@ $(document).ready(function()
 			};
 		});
 
-		$(window).mouseup(function(e)
+		$(window).endEvent(function(e)	//"touchend" for smartphone.
 		 {
 			if (playerSelected)
 			{
