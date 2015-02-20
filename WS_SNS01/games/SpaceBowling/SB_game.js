@@ -80,6 +80,11 @@ $(document).ready(function()
 
 		uiPlay.click(function(e)
 		{
+			if (!e.pageX)
+			{
+				e = event.touches[0];
+			}
+
 			e.preventDefault();
 			uiIntro.hide();
 			startGame();
@@ -87,6 +92,11 @@ $(document).ready(function()
 
 		uiReset.click(function(e)
 		{
+			if (!e.pageX)
+			{
+				e = event.touches[0];
+			}
+
 			e.preventDefault();
 			uiComplete.hide();
 			startGame();
