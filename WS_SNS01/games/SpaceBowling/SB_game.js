@@ -3,9 +3,29 @@ $(document).ready(function()
 	var canvas = $("#gameCanvas");
 	var context = canvas.get(0).getContext("2d");
 
+	//Distinguish Event handler based on terminal types.
+	var spFlag = false;
+	var ua = navigator.userAgent;
+
+	if(ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1 || ua.indexOf('iPod')  > -1)
+	{
+		var startEvent = "touchstart";
+		var moveEvent  = "touchmove";
+		var endEvent   = "touchend";
+
+		spFlag = true;
+
+	}
+	else
+	{
+		var startEvent = "mousedown";
+		var moveEvent  = "mousemove";
+		var endEvent   = "mouseup";
+	}
+
 	// Canvas dimensions
-	var canvasWidth = canvas.width();
-	var canvasHeight = canvas.height();
+	var canvasWidth = canvas.width;
+	var canvasHeight = canvas.height;
 
 	// Variables for game setting
 	var playGame;
@@ -53,23 +73,26 @@ $(document).ready(function()
 		this.vY = 0;
 
 		this.player = false;
-	}
+	};
 
-	//Distinguish Event handler based on terminal types.
-	var ua = navigator.userAgent;
 
-	if(ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1 || ua.indexOf('iPod')  > -1)
+	$(window).load(function()
 	{
-		var startEvent = "touchstart";
-		var moveEvent  = "touchmove";
-		var endEvent   = "touchend";
-	}
-	else
-	{
-		var startEvent = "mousedown";
-		var moveEvent  = "mousemove";
-		var endEvent   = "mouseup";
-	}
+		if(spFlag)
+		{
+			setCanvasSize4SP();
+			canvasWidth = canvas.width;
+			canvasHeight = canvas.height;
+		}
+
+		function setCanvasSize4SP()
+		{
+			canvas.width = window.innerWidth * window.devicePixelRatio;
+			canvas.height = window.innerHeight * window.devicePixelRatio;
+		}
+		
+	});
+
 
 
 	// Initialize the game environment
@@ -108,7 +131,18 @@ $(document).ready(function()
 	{
 		// Set up initial game settings
 		playGame = false;
-		platformX = canvasWidth / 2;
+
+		if (spFlag)
+		{
+			platformX = canvasWidth / 3.5;
+			playerOriginalY = canvasHeight - 700;
+		}
+		else
+		{
+			platformX = canvasWidth / 2;
+			playerOriginalY = canvasHeight - 150;
+		}
+
 		platformY = 150;
 		platformOuterRadius = 100;
 		platformInnerRadius = 75;
@@ -119,8 +153,8 @@ $(document).ready(function()
 		var pRadius = 15;
 		var pMass = 10;
 		var pFriction = 0.97;
-		playerOriginalX = canvasWidth / 2;
-		playerOriginalY = canvasHeight - 150;
+		playerOriginalX = platformX;
+		
 		player = new Asteroid(playerOriginalX, playerOriginalY, pRadius, pMass, pFriction);
 		player.player = true;
 		asteroids.push(player);
