@@ -24,8 +24,8 @@ $(document).ready(function()
 	}
 
 	// Canvas dimensions
-	var canvasWidth = canvas.width;
-	var canvasHeight = canvas.height;
+	var canvasWidth = canvas.width();
+	var canvasHeight = canvas.height();
 
 	// Variables for game setting
 	var playGame;
@@ -75,7 +75,27 @@ $(document).ready(function()
 		this.player = false;
 	};
 
+/*
+	$(window).load(function()
+	{
+		if(spFlag)
+		{
+			setCanvasSize4SP();
+			canvasWidth = canvas.width();
+			canvasHeight = canvas.height();
+		}
 
+		function setCanvasSize4SP()
+		{
+			//canvas.get(0).width = window.innerWidth * window.devicePixelRatio;
+			//canvas.get(0).height = window.innerHeight * window.devicePixelRatio;
+			canvas.get(0).width = $(window).width();
+			canvas.get(0).height = $(window).height();
+		}
+	
+	});
+*/
+/*
 	$(window).load(function()
 	{
 		if(spFlag)
@@ -90,9 +110,8 @@ $(document).ready(function()
 			canvas.width = window.innerWidth * window.devicePixelRatio;
 			canvas.height = window.innerHeight * window.devicePixelRatio;
 		}
-		
-	});
-
+	
+	});*/
 
 
 	// Initialize the game environment
@@ -132,6 +151,7 @@ $(document).ready(function()
 		// Set up initial game settings
 		playGame = false;
 
+/*
 		if (spFlag)
 		{
 			platformX = canvasWidth / 3.5;
@@ -142,6 +162,11 @@ $(document).ready(function()
 			platformX = canvasWidth / 2;
 			playerOriginalY = canvasHeight - 150;
 		}
+*/
+
+		platformX = canvasWidth / 2;
+		playerOriginalY = canvasHeight - 150;
+
 
 		platformY = 150;
 		platformOuterRadius = 100;
@@ -559,9 +584,9 @@ $(document).ready(function()
 				uiStats.hide();
 				uiComplete.show();
 
-				$(window).unbind("mousedown");
-				$(window).unbind("mouseup");
-				$(window).unbind("mousemove");
+				$(window).unbind(startEvent);
+				$(window).unbind(moveEvent);
+				$(window).unbind(endEvent);
 			};
 		};
 	};
