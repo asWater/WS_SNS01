@@ -144,7 +144,7 @@ $(document).ready(function()
 		uiStats.show();
 
 		// Event listeners
-		$(window).startEvent(function(e)
+		$(window).bind(startEvent, function(e)
 		{
 			//Special process for smartphone.
 			if (!e.pageX)
@@ -179,7 +179,7 @@ $(document).ready(function()
 			};
 		});
 
-		$(window).moveEvent(function(e)	//"touchmove" for smartphone.
+		$(window).bind(moveEvent, function(e)	//"touchmove" for smartphone.
 		{
 			//Special process for smartphone.
 			if (!e.pageX)
@@ -212,7 +212,7 @@ $(document).ready(function()
 			};
 		});
 
-		$(window).endEvent(function(e)	//"touchend" for smartphone.
+		$(window).bind(endEvent, function(e)	//"touchend" for smartphone.
 		 {
 			//Special process for smartphone.
 			//"touchend" does not return event information, so special handligng is necessary.
