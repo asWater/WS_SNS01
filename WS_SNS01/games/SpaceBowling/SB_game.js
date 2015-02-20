@@ -75,6 +75,7 @@ $(document).ready(function()
 		this.player = false;
 	};
 
+
 /*
 	$(window).load(function()
 	{
@@ -211,6 +212,9 @@ $(document).ready(function()
 				e = event.touches[0];
 				$(this).data("e",e);	//for touchend event.
 			}
+
+			//Prevant drag motion for Smartphone.
+			e.preventDefault();
 
 			if (!playerSelected && (player.x == playerOriginalX) && (player.y == playerOriginalY))
 			{
