@@ -23,6 +23,9 @@ if ($loggedIn)
 	{
 		echo "<p><span class='main'>&#9758; You have no friends. What about finding <a href='members.php'>friends</a>?</span></p>";
 	}
+
+	echo "<p><span class='main'>&#9758; What about enjoying <strong><a href='games/gameindex.html'>Games</a></strong> ?</p></span>";
+
 }
 else
 {
