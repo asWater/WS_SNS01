@@ -27,6 +27,12 @@ $(document).ready(function()
 	var canvasWidth = canvas.width();
 	var canvasHeight = canvas.height();
 
+	if(spFlag)
+	{
+		canvasWidth = canvasWidth - 20;
+		canvasHeight = canvasHeight - 20;
+	}
+
 	// Variables for game setting
 	var playGame;
 	var platformX;
@@ -75,16 +81,6 @@ $(document).ready(function()
 		this.player = false;
 	};
 
-//canvas.get(0).style.width = window.innerWidth + 'px';
-//canvas.get(0).style.height = window.innerHeight + 'px';
-canvas.get(0).width = window.innerWidth * window.devicePixelRatio;
-canvas.get(0).height = window.innerHeight * window.devicePixelRatio;
-
-/*
-context.style.width = window.innerWidth + 'px';
-context.style.height = window.innerHeight + 'px';
-context.style.overflow = 'hidden';
-*/
 
 /*
 	if(spFlag)
@@ -103,13 +99,6 @@ context.style.overflow = 'hidden';
 		canvas.get(0).width = window.innerWidth * window.devicePixelRatio;
 		canvas.get(0).height = window.innerHeight * window.devicePixelRatio;
 	}
-/*
-	var container = document.createElement('div');
-	container.style.width = window.innerWidth + 'px';
-	container.style.height = window.innerHeight + 'px';
-	container.style.overflow = 'hidden';
-	container.appendChild(canvas);
-	document.body.appendChild(container);
 */
 /*
 	$(window).load(function()
