@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+	window.scrollTo(0,0);
+
 	var canvas = $("#gameCanvas");
 	var context = canvas.get(0).getContext("2d");
 
