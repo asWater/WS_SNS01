@@ -75,6 +75,17 @@ $(document).ready(function()
 		this.player = false;
 	};
 
+//canvas.get(0).style.width = window.innerWidth + 'px';
+//canvas.get(0).style.height = window.innerHeight + 'px';
+canvas.get(0).width = window.innerWidth * window.devicePixelRatio;
+canvas.get(0).height = window.innerHeight * window.devicePixelRatio;
+
+/*
+context.style.width = window.innerWidth + 'px';
+context.style.height = window.innerHeight + 'px';
+context.style.overflow = 'hidden';
+*/
+
 /*
 	if(spFlag)
 	{
@@ -253,7 +264,7 @@ $(document).ready(function()
 			}
 
 			if (playerSelected)
-			{
+			{				
 				var canvasOffset = canvas.offset();
 				var canvasX = Math.floor(e.pageX - canvasOffset.left);
 				var canvasY = Math.floor(e.pageY - canvasOffset.top);
