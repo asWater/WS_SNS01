@@ -75,26 +75,30 @@ $(document).ready(function()
 		this.player = false;
 	};
 
-
 /*
-	$(window).load(function()
+	if(spFlag)
 	{
-		if(spFlag)
-		{
-			setCanvasSize4SP();
-			canvasWidth = canvas.width();
-			canvasHeight = canvas.height();
-		}
+		setCanvasSize4SP();
+		canvasWidth = canvas.width();
+		canvasHeight = canvas.height();
+	}
 
-		function setCanvasSize4SP()
-		{
-			//canvas.get(0).width = window.innerWidth * window.devicePixelRatio;
-			//canvas.get(0).height = window.innerHeight * window.devicePixelRatio;
-			canvas.get(0).width = $(window).width();
-			canvas.get(0).height = $(window).height();
-		}
-	
-	});
+	function setCanvasSize4SP()
+	{
+		//canvas.get(0).width = window.innerWidth * window.devicePixelRatio;
+		//canvas.get(0).height = window.innerHeight * window.devicePixelRatio;
+		canvas.get(0).style.width = window.innerWidth + 'px';
+		canvas.get(0).style.height = window.innerHeight + 'px';
+		canvas.get(0).width = window.innerWidth * window.devicePixelRatio;
+		canvas.get(0).height = window.innerHeight * window.devicePixelRatio;
+	}
+/*
+	var container = document.createElement('div');
+	container.style.width = window.innerWidth + 'px';
+	container.style.height = window.innerHeight + 'px';
+	container.style.overflow = 'hidden';
+	container.appendChild(canvas);
+	document.body.appendChild(container);
 */
 /*
 	$(window).load(function()
@@ -212,9 +216,6 @@ $(document).ready(function()
 				e = event.touches[0];
 				$(this).data("e",e);	//for touchend event.
 			}
-
-			//Prevant drag motion for Smartphone.
-			e.preventDefault();
 
 			if (!playerSelected && (player.x == playerOriginalX) && (player.y == playerOriginalY))
 			{
