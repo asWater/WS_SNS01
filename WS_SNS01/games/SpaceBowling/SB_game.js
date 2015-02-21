@@ -27,12 +27,6 @@ $(document).ready(function()
 	var canvasWidth = canvas.width();
 	var canvasHeight = canvas.height();
 
-	if(spFlag)
-	{
-		canvasWidth = canvasWidth - 20;
-		canvasHeight = canvasHeight - 20;
-	}
-
 	// Variables for game setting
 	var playGame;
 	var platformX;
