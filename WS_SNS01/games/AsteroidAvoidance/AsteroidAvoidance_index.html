@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user']))
+{
+	die("<p>You must <strong><a href='../../login.php'>Log In</a></strong> to view this page!</p>");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>

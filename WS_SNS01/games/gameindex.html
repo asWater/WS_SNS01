@@ -1,3 +1,17 @@
+<?php
+
+require_once '../header.php';
+
+if (!$loggedIn)
+{
+	die ("<p><span class='main'>You must <strong><a href='../login.php'>Log In</a></strong> to view this page!</span></p>");	
+}
+
+echo "<span class='main'>Hi $user, you can enjoy playing these games for free.</span>";
+
+?>
+
+<!--
 <!DOCTYPE html>
 <html>
 	<head>
@@ -6,8 +20,9 @@
 		<link rel='stylesheet' href='../styles.css' type='text/css' />
 	</head>
 	<body>
-		<div id="gameIndex">
-			<p class="error">On Internet Explorer, it is NOT possible to play these games</p>
+-->
+		<div class="main" id="gameIndex">
+			<p class="error">On Internet Explorer, it is NOT possible to play these games so far, sorry...</p>
 			<ul type="disc">
 				<li><a href="SpaceBowling/SB_index.html">Space Bowling</a></li>
 				<li><a href="AsteroidAvoidance/AsteroidAvoidance_index.html">Asteroid Avoidance</a></li>
