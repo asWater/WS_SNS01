@@ -114,15 +114,6 @@ $(document).ready(function()
 	
 	});*/
 
-// sort of emulate safari's "bounce back to top" scroll
-window.addEventListener('scroll', function(ev) {
-    // avoids scrolling when the focused element is e.g. an input
-    if (!document.activeElement || document.activeElement === document.body) 
-    {
-        document.body.scrollIntoViewIfNeeded(true);
-    }
-});
-
 
 	// Initialize the game environment
 	function init()

@@ -15,16 +15,16 @@ if ($loggedIn)
 	$result = queryMysql_L("SELECT * FROM profiles WHERE user = '$user'");
 	if (!$result->num_rows)
 	{
-		echo "<p><span class='main'>&#9758; You have no profile information. What about creating your <a href='profile.php'>profile</a>?</span></p>";
+		echo "<p><span class='main'>&#9758; You have no profile information. What about creating your <strong><a href='profile.php'>profile</a></strong>?</span></p>";
 	}
 
 	$result = queryMysql_L("SELECT * FROM friends WHERE user = '$user'");
 	if (!$result->num_rows)
 	{
-		echo "<p><span class='main'>&#9758; You have no friends. What about finding <a href='members.php'>friends</a>?</span></p>";
+		echo "<p><span class='main'>&#9758; You have no friends. What about finding <strong><a href='members.php'>friends</a></strong>?</span></p>";
 	}
 
-	echo "<p><span class='main'>&#9758; What about enjoying <strong><a href='games/gameindex.html'>Games</a></strong> ?</p></span>";
+	echo "<p><span class='main'>&#9758; What about enjoying <strong><a href='games/gameindex.html'>Games</a></strong>?</p></span>";
 
 }
 else

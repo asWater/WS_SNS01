@@ -4,7 +4,17 @@ require_once '../header.php';
 
 if (!$loggedIn)
 {
-	die ("<p><span class='main'>You must <strong><a href='../login.php'>Log In</a></strong> to view this page!</span></p>");	
+	echo "<link rel='stylesheet' href='../styles.css' type='text/css'>";
+	//echo "<script src='headerLinkMod.js'></script>";
+	echo <<<_END
+	<script>
+		$("#HomeLink2").prop("href", "../index.php");
+		$("#SignupLink").prop("href", "../signup.php");
+		$("#LoginLink").prop("href", "../login.php");
+	</script>
+_END;
+	
+	die ("<p><span class='main'>You must <strong><a href='../login.php'>Log In</a></strong> to view this page!</span></p>");
 }
 
 echo "<span class='main'>Hi $user, you can enjoy playing these games for free.</span>";
@@ -22,7 +32,6 @@ echo "<span class='main'>Hi $user, you can enjoy playing these games for free.</
 	<body>
 -->
 		<link rel='stylesheet' href='../styles.css' type='text/css'>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script type="text/javascript"> var user = "<?=$user ?>";</script>
 		<script type="text/javascript" src="headerLinkMod.js"></script>
 

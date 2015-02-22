@@ -26,6 +26,7 @@ echo <<<_END
 	</head>
 	<body>
 	<div class='appname'>$appName$userStr</div>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
 	<script src='OSC.js'></script>
 	<script src='checkSignup.js'></script>
 _END;
