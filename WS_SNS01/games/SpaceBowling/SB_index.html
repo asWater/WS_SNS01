@@ -5,6 +5,11 @@ if (!isset($_SESSION['user']))
 {
 	die("<p>You must <strong><a href='../../login.php'>Log In</a></strong> to view this page!</p>");
 }
+else
+{
+	$user = $_SESSION['user'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +21,9 @@ if (!isset($_SESSION['user']))
 
 		<link href="SB_index.css" rel="stylesheet" type="text/css">
 
+		<script type="text/javascript"> var user = "<?=$user ?>";</script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src='../../checkSignup.js'></script>
 		<script type="text/javascript" src="SB_game.js"></script>
 	</head>
 	<body ontouchmove="event.preventDefault()">

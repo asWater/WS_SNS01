@@ -44,6 +44,12 @@
 				   image MEDIUMBLOB,
 				   INDEX(user(10))');
 
+	createTable_L('gamescores',
+				  'user VARCHAR(16),
+				   game VARCHAR(30),
+				   score INT UNSIGNED,
+				   INDEX(user(10))');
+
 	?>
 
 	<br> ...Done.

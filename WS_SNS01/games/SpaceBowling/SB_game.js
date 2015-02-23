@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+	alert("user: " + user);
+
 	window.scrollTo(0,0);
 
 	var canvas = $("#gameCanvas");
@@ -582,14 +584,18 @@ $(document).ready(function()
 
 			if (remaining == 0)
 			{
-				// Winner
+				// Game Finish.
 				playGame = false;
 				uiStats.hide();
+
+				// Check & Update score to DB, if it is the Highest-Score.
+				scoreUpdate();
+
 				uiComplete.show();
 
-				$(window).unbind(startEvent);
-				$(window).unbind(moveEvent);
-				$(window).unbind(endEvent);
+				$(window).unbind("touchstart mousedown");
+				$(window).unbind("touchmove mousemove");
+				$(window).unbind("touchend mouseup");
 			};
 		};
 	};
@@ -601,6 +607,34 @@ $(document).ready(function()
 		context.closePath();
 		context.fill();
 	};
+
+	function scoreUpdate()
+	{
+		request = new ajaxRequest_L();
+		var params = "user=" + user +"&game=SpaceBowling&score=" + score;
+
+		request.open("POST", "../updateScore.php", true)
+		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		request.setRequestHeader("Content-length", params.length);
+		request.setRequestHeader("Connection", "close");
+
+		request.onreadystatechange = function()
+		{
+			if (this.readyState == 4)	// 1: Reading, 2: Finish reading, 3: Analyzing data, 4: Finish analyzing data 
+			{
+				if (this.status == 200)	// HTTP status: 200 = OK.
+				{
+					if (this.responseText != null)	// Text data replied by the server.
+					{
+						alert(this.responseText);
+					}
+				}
+			}
+		};
+
+		request.send(params);
+
+		}
 
 	// Initial procedure !!
 	init();
