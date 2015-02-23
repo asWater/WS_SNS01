@@ -9,6 +9,7 @@ $(document).ready(function()
 	var spFlag = false;
 	var ua = navigator.userAgent;
 
+	/*
 	if(ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1 || ua.indexOf('iPod')  > -1)
 	{
 		var startEvent = "touchstart";
@@ -24,6 +25,7 @@ $(document).ready(function()
 		var moveEvent  = "mousemove";
 		var endEvent   = "mouseup";
 	}
+	*/
 
 	// Canvas dimensions
 	var canvasWidth = canvas.width();
@@ -204,7 +206,7 @@ $(document).ready(function()
 		uiStats.show();
 
 		// Event listeners
-		$(window).bind(startEvent, function(e)
+		$(window).bind("touchstart mousedown", function(e)
 		{
 			//Special process for smartphone.
 			if (!e.pageX)
@@ -239,7 +241,7 @@ $(document).ready(function()
 			};
 		});
 
-		$(window).bind(moveEvent, function(e)	//"touchmove" for smartphone.
+		$(window).bind("touchmove mousemove", function(e)	//"touchmove" for smartphone.
 		{
 			//Special process for smartphone.
 			if (!e.pageX)
@@ -272,7 +274,7 @@ $(document).ready(function()
 			};
 		});
 
-		$(window).bind(endEvent, function(e)	//"touchend" for smartphone.
+		$(window).bind("touchend mouseup", function(e)	//"touchend" for smartphone.
 		 {
 			//Special process for smartphone.
 			//"touchend" does not return event information, so special handligng is necessary.
