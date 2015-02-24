@@ -44,6 +44,16 @@ li a:hover, .button:hover {
 .fieldname {
   float:left;
   width:155px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.inputfield
+{
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
 .main {
@@ -83,13 +93,13 @@ li a:hover, .button:hover {
   color: #666;
   margin-right: 8px;
 
-/*
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #aaa;
-    -webkit-box-shadow: 1px 1px 2px #E7E7E7;
-    -moz-box-shadow: 1px 1px 2px #E7E7E7;
-*/
+  border-radius     :5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  
+  text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #aaa;
+  -webkit-box-shadow: 1px 1px 2px #E7E7E7;
+  -moz-box-shadow: 1px 1px 2px #E7E7E7;
 
   background: -moz-linear-gradient(top, #fff, #F1F1F1 1%, #F1F1F1 50%, #DFDFDF 99%, #ccc);
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.01, #F1F1F1), color-stop(0.5, #F1F1F1), color-stop(0.99, #DFDFDF), to(#ccc));
@@ -107,8 +117,9 @@ input#submit_button
   color: #666;
   margin-right: 8px;
   text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #aaa;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
+  border-radius     :5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
   -webkit-box-shadow: 1px 1px 2px #E7E7E7;
   -moz-box-shadow: 1px 1px 2px #E7E7E7;
   background: -moz-linear-gradient(top, #fff, #F1F1F1 1%, #F1F1F1 50%, #DFDFDF 99%, #ccc);
@@ -144,11 +155,20 @@ input#submit_button
   font-size :97px;
 }
 
+.gameTitle
+{
+  border-color: turquoise;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 15px;
+  margin-right: 40px;
+  background: turquoise;
+}
 
 .gameTab
 {
   border-width: 2px;
-  border-color: #000;
+  border-color: turquoise;
   border-style: solid;
   border-spacing: 0;
   border-collapse: separate;
@@ -164,17 +184,18 @@ input#submit_button
 {
   padding: 5px;
   border-width: 1px;
-  border-color: #000;
+  border-color: turquoise;
   border-style: solid;
   border-collapse: collapse;
   text-align: center;
+  color: midnightblue;
 }
 
 /* border-radius -> 方向と垂直方向の半径の値を、左上・右上・右下・左下の順で指定します。 */
 
 .gameTab th
 {
-  background: cyan;
+  background: aqua;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
 }
 

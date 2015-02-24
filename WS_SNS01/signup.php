@@ -86,16 +86,16 @@ echo <<<_END
 <form id='signup' method='post' action='signup.php'><span class='error'> $error </span>
 
 <span class='fieldname'>Username</span>
-<input type ='text' maxlength='16' name='user' value='$user' onkeyup='checkUser_L(this)' onblur='checkUser_L(this)'/><span id='userInfo'></span><br>
+<input type ='text' class='inputfield' maxlength='16' name='user' value='$user' onkeyup='checkUser_L(this)' onblur='checkUser_L(this)'/><span id='userInfo'></span><br>
 
 <span class='fieldname'>Password</span>
-<input type='password' maxlength='32' name='pass' value='$pass' onkeyup='checkPass_L(this)'/><span id='passInfo'></span><br>
+<input type='password' class='inputfield' maxlength='32' name='pass' value='$pass' onkeyup='checkPass_L(this)'/><span id='passInfo'></span><br>
 
 <span class='fieldname'>Confirm Password</span>
-<input type='password' maxlength='32' name='passAgain' value='$passAgain' onblur='confirmPass_L(this)'/><span id='passConf'></span><br>
+<input type='password' class='inputfield' maxlength='32' name='passAgain' value='$passAgain' onblur='confirmPass_L(this)'/><span id='passConf'></span><br>
 
 <span class='fieldname'>E-mail Address</span>
-<input type = 'text' maxlength='255' name='email' value='$email' onkeyup='checkEmail_L(this)' onblur='checkEmail_L(this)'/><span id='emailInfo'></span><br>
+<input type = 'text' class='inputfield' maxlength='255' name='email' value='$email' onkeyup='checkEmail_L(this)' onblur='checkEmail_L(this)'/><span id='emailInfo'></span><br>
 _END;
 
 ?>
