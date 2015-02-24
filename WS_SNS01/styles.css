@@ -143,3 +143,138 @@ input#submit_button
   font-style:italic;
   font-size :97px;
 }
+
+
+.gameTab
+{
+  border-width: 2px;
+  border-color: #000;
+  border-style: solid;
+  border-spacing: 0;
+  border-collapse: separate;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+       -o-border-radius: 6px;
+          border-radius: 6px;
+  box-shadow: 0 1px 1px #CCC; 
+}
+
+.gameTab th,
+.gameTab td
+{
+  padding: 5px;
+  border-width: 1px;
+  border-color: #000;
+  border-style: solid;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+/* border-radius -> 方向と垂直方向の半径の値を、左上・右上・右下・左下の順で指定します。 */
+
+.gameTab th
+{
+  background: cyan;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+/* -----------------------
+  左上角丸　最初の行の最初のセル
+----------------------- */
+.gameTab tr:first-child th:first-child,
+.gameTab tr:first-child td:first-child {
+    -webkit-border-radius: 6px 0 0 0;
+       -moz-border-radius: 6px 0 0 0;
+         -o-border-radius: 6px 0 0 0;
+            border-radius: 6px 0 0 0;
+}
+/* -----------------------
+  右上角丸　最初の行の最後のセル
+----------------------- */
+.gameTab tr:first-child th:last-child,
+.gameTab tr:first-child td:last-child {
+    -webkit-border-radius: 0 6px 0 0;
+       -moz-border-radius: 0 6px 0 0;
+         -o-border-radius: 0 6px 0 0;
+            border-radius: 0 6px 0 0;
+}
+/* -----------------------
+  左下角丸　最後の行の最初のセル
+----------------------- */
+.gameTab tr:last-child th:first-child,
+.gameTab tr:last-child td:first-child {
+    -webkit-border-radius: 0 0 0 6px;
+       -moz-border-radius: 0 0 0 6px;
+         -o-border-radius: 0 0 0 6px;
+            border-radius: 0 0 0 6px;
+}
+/* -----------------------
+  右下角丸　最後の行の最後のセル
+----------------------- */
+.gameTab tr:last-child th:last-child,
+.gameTab tr:last-child td:last-child {
+    -webkit-border-radius: 0 0 6px 0;
+       -moz-border-radius: 0 0 6px 0;
+         -o-border-radius: 0 0 6px 0;
+            border-radius: 0 0 6px 0;
+}
+/* --------------------------------------------
+  thaed,tbodyを使う場合の設定
+-------------------------------------------- */
+.gameTab thead th {background:#e3dcd5;}
+.gameTab thead+tbody th {background:#f4ede6;}
+.gameTab tbody th {text-align:center;}/*IE*/
+/* -----------------------
+  左上角丸 thead内　最初の行の最初のセル
+----------------------- */
+.gameTab thead tr:first-child th:first-child,
+.gameTab thead tr:first-child td:first-child {
+    -webkit-border-radius: 6px 0 0 0;
+       -moz-border-radius: 6px 0 0 0;
+         -o-border-radius: 6px 0 0 0;
+            border-radius: 6px 0 0 0;
+}
+/* -----------------------
+  右上角丸 thead内　最初の行の最後のセル
+----------------------- */
+.gameTab thead tr:first-child th:last-child,
+.gameTab thead tr:first-child td:last-child {
+    -webkit-border-radius: 0 6px 0 0;
+       -moz-border-radius: 0 6px 0 0;
+         -o-border-radius: 0 6px 0 0;
+            border-radius: 0 6px 0 0;
+}
+/* -----------------------
+  角丸なし　thaedの後のtbody 最初の行の最初のセル
+  角丸なし　thaedの後のtbody 最初の行の最後のセル
+----------------------- */
+.gameTab thead+tbody tr:first-child th:first-child,
+.gameTab thead+tbody tr:first-child td:first-child,
+.gameTab thead+tbody tr:first-child th:last-child,
+.gameTab thead+tbody tr:first-child td:last-child {
+    -webkit-border-radius:0px;
+       -moz-border-radius:0px;
+         -o-border-radius:0px;
+            border-radius:0px;
+}
+/* -----------------------
+  左下角丸　thaedの後のtbody 最後の行の最初のセル
+----------------------- */
+.gameTab thead+tbody tr:last-child th:first-child,
+.gameTab thead+tbody tr:last-child td:first-child {
+    -webkit-border-radius: 0 0 0 6px;
+       -moz-border-radius: 0 0 0 6px;
+         -o-border-radius: 0 0 0 6px;
+            border-radius: 0 0 0 6px;
+}
+/* -----------------------
+  右下角丸　thaedの後のtbody 最後の行の最後のセル
+----------------------- */
+.gameTab thead+tbody tr:last-child th:last-child,
+.gameTab thead+tbody tr:last-child td:last-child {
+    -webkit-border-radius: 0 0 6px 0;
+       -moz-border-radius: 0 0 6px 0;
+         -o-border-radius: 0 0 6px 0;
+            border-radius: 0 0 6px 0;
+}
+

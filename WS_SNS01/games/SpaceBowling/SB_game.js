@@ -115,7 +115,7 @@ $(document).ready(function()
 			canvas.width = window.innerWidth * window.devicePixelRatio;
 			canvas.height = window.innerHeight * window.devicePixelRatio;
 		}
-	
+
 	});*/
 
 
@@ -184,7 +184,7 @@ $(document).ready(function()
 		var pMass = 10;
 		var pFriction = 0.97;
 		playerOriginalX = platformX;
-		
+
 		player = new Asteroid(playerOriginalX, playerOriginalY, pRadius, pMass, pFriction);
 		player.player = true;
 		asteroids.push(player);
@@ -253,7 +253,7 @@ $(document).ready(function()
 			}
 
 			if (playerSelected)
-			{				
+			{
 				var canvasOffset = canvas.offset();
 				var canvasX = Math.floor(e.pageX - canvasOffset.left);
 				var canvasY = Math.floor(e.pageY - canvasOffset.top);
@@ -620,7 +620,7 @@ $(document).ready(function()
 
 		request.onreadystatechange = function()
 		{
-			if (this.readyState == 4)	// 1: Reading, 2: Finish reading, 3: Analyzing data, 4: Finish analyzing data 
+			if (this.readyState == 4)	// 1: Reading, 2: Finish reading, 3: Analyzing data, 4: Finish analyzing data
 			{
 				if (this.status == 200)	// HTTP status: 200 = OK.
 				{

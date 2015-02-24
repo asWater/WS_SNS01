@@ -13,7 +13,7 @@ if (!$loggedIn)
 		$("#LoginLink").prop("href", "../login.php");
 	</script>
 _END;
-	
+
 	die ("<p><span class='main'>You must <strong><a href='../login.php'>Log In</a></strong> to view this page!</span></p>");
 }
 
@@ -32,15 +32,24 @@ echo "<span class='main'>Hi $user, you can enjoy playing these games for free.</
 	<body>
 -->
 		<link rel='stylesheet' href='../styles.css' type='text/css'>
-		<script type="text/javascript"> var user = "<?=$user ?>";</script>
+		<!-- DOES NOT WORK, even though it was OK in my home environement. <script type="text/javascript"> var user = "<?=$user ?>";</script> -->
+		<script type="text/javascript"> var user = "<?php echo $user; ?>";</script>
 		<script type="text/javascript" src="headerLinkMod.js"></script>
 
 		<div class="main" id="gameIndex">
 			<p class="error">On Internet Explorer, it is NOT possible to play these games so far, sorry...</p>
-			<ul type="disc">
-				<li><a href="SpaceBowling/SB_index.html">Space Bowling</a></li>
-				<li><a href="AsteroidAvoidance/AsteroidAvoidance_index.html">Asteroid Avoidance</a></li>
-			</ul>
+
+			<h4><a href="SpaceBowling/SB_index.html">Space Bowling</a></h4>
+
+			<table class="gameTab" id="gameRankSB">
+				<tr> <th>Rank</th><th>User</th><th>Score</th> </tr>
+				<tr> <td>1</td><td>userssss</td><td>0</td> </tr>
+				<tr> <td>2</td><td>user</td><td>0</td> </tr>
+				<tr> <td>3</td><td>user</td><td>0</td> </tr>
+			</table>
+
+			<h4><a href="AsteroidAvoidance/AsteroidAvoidance_index.html">Asteroid Avoidance</a></h4>
+
 		</div>
 	</body>
 </html>
