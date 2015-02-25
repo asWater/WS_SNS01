@@ -51,7 +51,7 @@ if ($view != "")
 	      <textarea name='text' cols='40' rows='3'></textarea><br>
 	      Public<input type='radio' name='privacy' value='0' checked='checked'>
 	      Private<input type='radio' name='privacy' value='1'>
-	      <input type='submit' value='Post Message'></form><br>
+	      <input id='submit_button' type='submit' value='Post Message'></form><br>
 _END;
 	}
 

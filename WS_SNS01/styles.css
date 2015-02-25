@@ -154,7 +154,7 @@ input#submit_button
   -webkit-box-shadow: 1px 1px 2px #E7E7E7;
   -moz-box-shadow: 1px 1px 2px #E7E7E7;
   
-  background: darkred;
+  background: chocolate;
   /*
   background: -moz-linear-gradient(top, #fff, #F1F1F1 1%, #F1F1F1 50%, #DFDFDF 99%, #ccc);
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.01, #F1F1F1), color-stop(0.5, #F1F1F1), color-stop(0.99, #DFDFDF), to(#ccc));
@@ -358,5 +358,79 @@ input#submit_button:hover
        -moz-border-radius: 0 0 6px 0;
          -o-border-radius: 0 0 6px 0;
             border-radius: 0 0 6px 0;
+}
+
+@-webkit-keyframes pulse 
+{
+ from 
+ {
+   opacity: 1.0;/*透明度100%*/
+ }
+ to 
+ {
+   opacity: 0.5;/*透明度80%*/
+ }
+}
+
+@-moz-keyframes pulse 
+{
+ from 
+ {
+   opacity: 1.0;/*透明度100%*/
+ }
+ to 
+ {
+   opacity: 0.5;/*透明度80%*/
+ }
+}
+
+@keyframes pulse 
+{
+ from 
+ {
+   opacity: 1.0;/*透明度100%*/
+ }
+ to 
+ {
+   opacity: 0.5;/*透明度80%*/
+ }
+}
+
+.blinking
+{
+  -webkit-animation-name: pulse;/* 実行する名前 */
+  -webkit-animation-duration: 0.5s;/* 0.3秒かけて実行 */
+  -webkit-animation-iteration-count:infinite;/* 何回実行するか。infiniteで無限 */
+  -webkit-animation-timing-function:ease-in-out;/* イーズインアウト */
+  -webkit-animation-direction: alternate;/* alternateにするとアニメーションが反復 */
+  -webkit-animation-delay: 0s; /* 実行までの待ち時間 */
+
+  -moz-animation-name: pulse;/* 実行する名前 */
+  -moz-animation-duration: 0.5s;/* 0.3秒かけて実行 */
+  -moz-animation-iteration-count:infinite;/* 何回実行するか。infiniteで無限 */
+  -moz-animation-timing-function:ease-in-out;/* イーズインアウト */
+  -moz-animation-direction: alternate;/* alternateにするとアニメーションが反復 */
+  -moz-animation-delay: 0s; /* 実行までの待ち時間 */
+
+  animation-name: pulse;/* 実行する名前 */
+  animation-duration: 0.5s;/* 0.3秒かけて実行 */
+  animation-iteration-count:infinite;/* 何回実行するか。infiniteで無限 */
+  animation-timing-function:ease-in-out;/* イーズインアウト */
+  animation-direction: alternate;/* alternateにするとアニメーションが反復 */
+  animation-delay: 0s; /* 実行までの待ち時間 */
+
+  color: darkorange;
+}
+
+.gameExplain
+{
+  font-weight: normal;
+}
+
+.tableExplain
+{
+  font-weight: bold;
+  color: darkred;
+  margin-bottom: 2px;
 }
 
