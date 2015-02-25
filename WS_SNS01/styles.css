@@ -26,23 +26,19 @@ img {
   box-shadow        :2px 2px 2px #888;
 }
 
-li a, .button {
- text-decoration:none;
-}
-
-/*
-li a:hover, .button:hover {
-  color: red;
-}
-*/
-
-a:link {color: gold;}
-/*a:visited {color: orchid;}*/
+a:link {color: darkolivegreen;}
+a:visited {color: darkolivegreen;}
 a:active {color: blue;}
-a:hover {color: darkorange;}
+a:hover {color: darkred;}
 
 li a:visited {color: gold;}
 li a:hover {color: darkorange;}
+
+li a, .button {text-decoration:none;}
+
+.button:link{color: gold;}
+.button:visited{color: gold;}
+.button:hover{color: darkorange;}
 
 
 .appname {
@@ -110,6 +106,7 @@ li a:hover {color: darkorange;}
   cursor: pointer;
   color: gold;
   margin-right: 8px;
+  margin-top: 8px;
 
   border-radius     :5px;
   -webkit-border-radius: 5px;
@@ -131,6 +128,10 @@ li a:hover {color: darkorange;}
   background: darkred;
 
 }
+
+.menu li a:link {color: gold;}
+.menu li a:visited {color: gold;}
+.menu li a:hover {color: darkorange;}
 
 input#submit_button
 {

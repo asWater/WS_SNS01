@@ -38,7 +38,7 @@ if ($loggedIn)
 		 "<li><a id='MemberLink' href='members.php'>Members</a></li>" .
 		 "<li><a id='FriendLink' href='friends.php'>Friends</a></li>" .
 		 "<li><a id='ProfLink' href='members.php?view=$user'>Profile</a></li>" .
-		 "<li><a id='EditProfLink' href='profile.php'>Edit Profile</a></li>" .
+		 //"<li><a id='EditProfLink' href='profile.php'>Edit Profile</a></li>" .
 		 "<li><a id='GameLink' href='games/gameindex.html'>Games</a></li>" .
 		 "<li><a id='LogoutLink' href='logout.php'>Log out</a></li>" .
 		 "</ul><br>";
