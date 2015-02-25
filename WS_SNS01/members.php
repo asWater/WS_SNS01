@@ -49,7 +49,7 @@ elseif (isset($_GET['remove']))
 $result = queryMysql_L("SELECT user FROM members ORDER BY user");
 $num = $result->num_rows;
 
-echo "<h3>Other Members</h3><ul>";
+echo "<span class='subhead'>Other Members</span><ul>";
 
 for ($j = 0; $j < $num; $j++)
 {
@@ -57,7 +57,7 @@ for ($j = 0; $j < $num; $j++)
 
 	if ($row['user'] == $user) continue;
 
-	echo "<li><a href='members.php?view=" . $row['user'] . "'>" . $row['user'] . "</a>";
+	echo "<li class='member'><a href='members.php?view=" . $row['user'] . "'>" . $row['user'] . "</a>";
 
 	$follow = "follow";
 

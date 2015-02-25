@@ -146,7 +146,7 @@ _END;
 ?>
 
 Image: <input type='file' name='image' size='14'>
-<input type='submit' value='Save Profile'>
+<input id='submit_button' type='submit' value='Save Profile'>
 </form></div>
 <br>
 </body>
