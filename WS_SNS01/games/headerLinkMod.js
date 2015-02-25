@@ -5,6 +5,7 @@ $(document).ready(function()
 	$("#FriendLink").prop("href", "../friends.php");
 	$("#ProfLink").prop("href", "../members.php?view=" + user);
 	$("#EditProfLink").prop("href", "../profile.php");
+	$("#GameLink").prop("href", "gameindex.html");
 	$("#LogoutLink").prop("href", "../logout.php");
 	$("#HomeLink2").prop("href", "../index.php");
 	$("#SignupLink").prop("href", "../signup.php");

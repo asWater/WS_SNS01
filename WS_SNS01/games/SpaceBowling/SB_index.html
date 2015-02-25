@@ -23,7 +23,8 @@ else
 
 		<script type="text/javascript"> var user = "<?php echo $user; ?>";</script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-		<script type="text/javascript" src='../../checkSignup.js'></script>
+		<script type="text/javascript" src="../../checkSignup.js"></script>
+		<script type="text/javascript" src="../gameFunctions.js"></script>
 		<script type="text/javascript" src="SB_game.js"></script>
 	</head>
 	<body ontouchmove="event.preventDefault()">
@@ -40,7 +41,7 @@ else
 					<p><a class="gameReset" href="">Reset</a></p>
 				</div>
 				<div id="gameComplete">
-					<h1>You Win!</h1>
+					<h1>Completed!</h1>
 					<p>Congratulations, you completed the game in <span class="gameScore"></span> clicks.</p>
 					<p> <a class="gameReset button" href="">Play again</a></p>
 				</div>

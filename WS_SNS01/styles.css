@@ -9,7 +9,9 @@ body {
   width     :800px;
   margin    :20px auto;
   background:#fff;
-  border    :1px solid #888;
+  border    :2px solid #888;
+  border-collapse: separate;
+  border-radius: 5px;
 }
 
 html {
@@ -28,17 +30,29 @@ li a, .button {
  text-decoration:none;
 }
 
+/*
 li a:hover, .button:hover {
-  color:green;
+  color: red;
 }
+*/
+
+a:link {color: gold;}
+/*a:visited {color: orchid;}*/
+a:active {color: blue;}
+a:hover {color: darkorange;}
+
+li a:visited {color: gold;}
+li a:hover {color: darkorange;}
+
 
 .appname {
   text-align :center;
-  background :#000;
-  color      :#f00;
+  background :darkred;
+  color      :gold;
   font-family:verdana;
   font-size  :20pt;
-  padding    :4px;
+  font-weight: bold;
+  padding    :20px;
 }
 
 .fieldname {
@@ -60,7 +74,7 @@ li a:hover, .button:hover {
   margin-left:40px;
 }
 
-.info 
+.info
 {
   color      :blue;
 	border     :1px solid blue;
@@ -82,7 +96,7 @@ li a:hover, .button:hover {
 	box-shadow        :2px 2px 2px #888;
 */
 
-  display: inline;
+  display: inline-block;
   border-top: 1px solid #ccc;
   border-right: 1px solid #999;
   border-bottom: 1px solid #999;
@@ -90,19 +104,28 @@ li a:hover, .button:hover {
   padding: 5px 20px;
   font-weight: bold;
   cursor: pointer;
-  color: #666;
+  color: gold;
   margin-right: 8px;
 
   border-radius     :5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  
+
+  /*
   text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #aaa;
+  */
+
+  box-shadow: 1px 1px 2px #E7E7E7;
   -webkit-box-shadow: 1px 1px 2px #E7E7E7;
   -moz-box-shadow: 1px 1px 2px #E7E7E7;
 
+  /*
   background: -moz-linear-gradient(top, #fff, #F1F1F1 1%, #F1F1F1 50%, #DFDFDF 99%, #ccc);
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.01, #F1F1F1), color-stop(0.5, #F1F1F1), color-stop(0.99, #DFDFDF), to(#ccc));
+  */
+
+  background: darkred;
+
 }
 
 input#submit_button
@@ -114,7 +137,7 @@ input#submit_button
   padding: 5px 20px;
   font-weight: bold;
   cursor: pointer;
-  color: #666;
+  color: gold;
   margin-right: 8px;
   text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #aaa;
   border-radius     :5px;
@@ -157,18 +180,27 @@ input#submit_button
 
 .gameTitle
 {
-  border-color: turquoise;
+  border-color: darkred;
   border-style: solid;
   border-radius: 5px;
   padding: 15px;
   margin-right: 40px;
-  background: turquoise;
+  background: darkred;
+  color: white;
 }
+
+.gameTitle a
+{
+  color:gold;
+  text-decoration: none;
+}
+
+.gameTitle a:hover {color: darkorange;}
 
 .gameTab
 {
   border-width: 2px;
-  border-color: turquoise;
+  border-color: darkred;
   border-style: solid;
   border-spacing: 0;
   border-collapse: separate;
@@ -184,20 +216,28 @@ input#submit_button
 {
   padding: 5px;
   border-width: 1px;
-  border-color: turquoise;
+  border-color: darkred;
   border-style: solid;
   border-collapse: collapse;
   text-align: center;
-  color: midnightblue;
+  color: gold;
+  font-size: 12px;
+}
+
+.gameTab th
+{
+  background: darkred;
+  /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;*/
+}
+
+.gameTab td
+{
+  color: darkred;
 }
 
 /* border-radius -> 方向と垂直方向の半径の値を、左上・右上・右下・左下の順で指定します。 */
 
-.gameTab th
-{
-  background: aqua;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
-}
+
 
 /* -----------------------
   左上角丸　最初の行の最初のセル

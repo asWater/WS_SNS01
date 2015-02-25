@@ -39,56 +39,28 @@ echo "<span class='main'>Hi $user, you can enjoy playing these games for free.</
 		<div class="main" id="gameIndex">
 			<p class="error">On Internet Explorer, it is NOT possible to play these games so far, sorry...</p>
 
-			<h4 class="gameTitle"><a href="SpaceBowling/SB_index.html">Space Bowling</a>: Try to remove all balls with less throws.</h4>
+			<h4 class="gameTitle"><a href="SpaceBowling/SB_index.html">Space Bowling</a> : Try to remove all balls with less throws.</h4>
 
 			<table class="gameTab" id="gameRankSB">
 				<tr> <th>Rank</th><th>User</th><th>Score</th> </tr>
 
 				<?php
 					require_once '../functions.php';
-
-					$r = 1;
-					$result = queryMysql_L("SELECT * FROM gamescores WHERE game = 'SpaceBowling' ORDER BY score LIMIT 5");
-
-					if ($result->num_rows)
-					{
-						while ($row = $result->fetch_array(MYSQLI_ASSOC))
-						{
-							echo "<tr><td>$r<td>" . $row['user'] . "</td><td>" . $row['score'] . "</td></tr>";
-							$r++;
-						}
-					}
-					else
-					{
-						echo "<h4>No ranking data yet</h4>";
-					}
+					$sortDesc = false;
+					showGameRanking("SpaceBowling", $sortDesc);
 				?>
 
 			</table>
 
-			<h4 class="gameTitle"><a href="AsteroidAvoidance/AsteroidAvoidance_index.html">Asteroid Avoidance</a>: Try to avoid asteroids as long as possible.</h4>
-			
+			<h4 class="gameTitle"><a href="AsteroidAvoidance/AsteroidAvoidance_index.html">Asteroid Avoidance</a> : <span class="error">(Can't play on smartphones)</span> Try to avoid asteroids as long as possible.</h4>
+
 			<table class="gameTab" id="gameRankSB">
 				<tr> <th>Rank</th><th>User</th><th>Score</th> </tr>
 
 				<?php
 					require_once '../functions.php';
-
-					$r = 1;
-					$result = queryMysql_L("SELECT * FROM gamescores WHERE game = 'AsteroidAvoidance' ORDER BY score LIMIT 3");
-
-					if ($result->num_rows)
-					{
-						while ($row = $result->fetch_array(MYSQLI_ASSOC))
-						{
-							echo "<tr><td>$r<td>" . $row['user'] . "</td><td>" . $row['score'] . "</td></tr>";
-							$r++;
-						}
-					}
-					else
-					{
-						echo "<h4>No ranking data yet</h4>";
-					}
+					$sortDesc = true;
+					showGameRanking("AsteroidAvoidance", $sortDesc);
 				?>
 
 			</table>

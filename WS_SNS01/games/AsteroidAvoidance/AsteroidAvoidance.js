@@ -319,27 +319,7 @@ $(document).ready(function()
 			};
 
 			// Collision Check
-			var dX = player.x - tmpAsteroid.x;
-			var dY = player.y - tmpAsteroid.y;
-			var distance = Math.sqrt((dX * dX) + (dY * dY));
-
-			if (distance < (player.halfWidth + tmpAsteroid.radius))
-			{
-				soundThrust.pause();
-				soundDeath.currentTime = 0;
-				soundDeath.play();
-
-				// Game Over
-				playGame = false;
-				clearTimeout(scoreTimeout);
-				uiStats.hide();
-				uiComplete.show();
-
-				soundBackground.pause();
-
-				$(window).unbind("keyup");
-				$(window).unbind("keydown");
-			};
+			collisionCheck(tmpAsteroid);
 
 			context.fillStyle = "rgb(255, 255, 255)";
 			context.beginPath();
@@ -348,6 +328,35 @@ $(document).ready(function()
 			context.fill();
 		};
 	};
+
+	function collisionCheck(tmpAsteroid)
+	{
+		var dX = player.x - tmpAsteroid.x;
+		var dY = player.y - tmpAsteroid.y;
+		var distance = Math.sqrt((dX * dX) + (dY * dY));
+
+		if (distance < (player.halfWidth + tmpAsteroid.radius))
+		{
+			soundThrust.pause();
+			soundDeath.currentTime = 0;
+			soundDeath.play();
+
+			// Game Over
+			playGame = false;
+			clearTimeout(scoreTimeout);
+			uiStats.hide();
+
+			// Check & Update score to DB, if it is the Highest-Score.
+			scoreUpdate(user, "AsteroidAvoidance", score);
+
+			uiComplete.show();
+
+			soundBackground.pause();
+
+			$(window).unbind("keyup");
+			$(window).unbind("keydown");
+		};
+	}
 
 	function timer()
 	{

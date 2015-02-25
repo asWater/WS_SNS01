@@ -103,4 +103,38 @@ function currentDateTime_L()
     return $date->format('Y-m-d H:i:s');
 }
 
+function showGameRanking($gameName, $sortDesc)
+{
+	$r = 0;
+	$tmpScore = 0;
+
+	if($sortDesc)
+	{
+		$result = queryMysql_L("SELECT * FROM gamescores WHERE game = '$gameName' ORDER BY score DESC LIMIT 5");
+	}
+	else
+	{
+		$result = queryMysql_L("SELECT * FROM gamescores WHERE game = '$gameName' ORDER BY score LIMIT 5");
+	}
+
+
+	if ($result->num_rows)
+	{
+		while ($row = $result->fetch_array(MYSQLI_ASSOC))
+		{
+			if ($tmpScore !== $row['score'])
+			{
+				$tmpScore = $row['score'];
+				$r++;
+			}
+
+			echo "<tr><td>$r<td>" . $row['user'] . "</td><td>" . $row['score'] . "</td></tr>";
+		}
+	}
+	else
+	{
+		echo "<h4>No score data yet</h4>";
+	}
+}
+
 ?>
