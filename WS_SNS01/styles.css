@@ -96,7 +96,7 @@ li a, .button {text-decoration:none;}
 	box-shadow        :2px 2px 2px #888;
 */
 
-  display: inline-block;
+  display: inline;
   border-top: 1px solid #ccc;
   border-right: 1px solid #999;
   border-bottom: 1px solid #999;
@@ -108,7 +108,8 @@ li a, .button {text-decoration:none;}
   margin-right: 8px;
   margin-top: 8px;
 
-  border-radius     :5px;
+  /* On IE10 border-radius does not work in Compatibility Mode -> Check the mode by F12 -> Browser Mode & Document Mode */
+  border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
 

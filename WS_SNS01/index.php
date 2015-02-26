@@ -10,22 +10,9 @@ echo "<br><span class='main'>Welcome to the backwoods, ";
 
 if ($loggedIn)
 {
-	echo "$user, you are logged in.";
-
-	$result = queryMysql_L("SELECT * FROM profiles WHERE user = '$user'");
-	if (!$result->num_rows)
-	{
-		echo "<p><span class='main'>&#9758; You have no profile information. What about creating your <strong><a href='profile.php'>profile</a></strong>?</span></p>";
-	}
-
-	$result = queryMysql_L("SELECT * FROM friends WHERE user = '$user'");
-	if (!$result->num_rows)
-	{
-		echo "<p><span class='main'>&#9758; You have no friends. What about finding <strong><a href='members.php'>friends</a></strong>?</span></p>";
-	}
-
-	echo "<p><span class='main'>&#9758; What about enjoying <strong><a href='games/gameindex.html'>Games</a></strong>?</p></span>";
-
+	showInformation_L($user);
+	echo "<p> Relevant Messages </p>";
+	showRelatedMessages_L($user);
 }
 else
 {

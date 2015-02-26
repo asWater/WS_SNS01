@@ -137,4 +137,88 @@ function showGameRanking($gameName, $sortDesc)
 	}
 }
 
+function showInformation_L($user)
+{
+	echo "$user, you are logged in.";
+
+	$result = queryMysql_L("SELECT * FROM profiles WHERE user = '$user'");
+	if (!$result->num_rows)
+	{
+		echo "<p><span class='main'>&#9758; You have no profile information. What about creating your <strong><a href='profile.php'>profile</a></strong>?</span></p>";
+	}
+
+	$result = queryMysql_L("SELECT * FROM friends WHERE user = '$user'");
+	if (!$result->num_rows)
+	{
+		echo "<p><span class='main'>&#9758; You have no friends. What about finding <strong><a href='members.php'>friends</a></strong>?</span></p>";
+	}
+
+	echo "<p><span class='main'>&#9758; What about enjoying <strong><a href='games/gameindex.html'>Games</a></strong>?</p></span>";
+}
+
+function showRelatedMessages_L($user)
+{
+	// Get only username whom the user is following.
+	$result = queryMysql_L("SELECT user FROM friends WHERE friend = '$user'");
+
+	// The user is following someone.
+	if ($result->num_rows)
+	{
+		while ($row = $result->fetch_array(MYSQLI_ASSOC))
+		{
+			echo "val = " . $row['user'] . "<br>";
+			$usrRows[] = $row['user'];
+		}
+
+		//$myName = array('user' => $user);
+		array_push($usrRows, $user);	// Add myself to sender list.
+
+		print_r($usrRows);
+
+		$result2 = queryMysql_L("SELECT * FROM messages WHERE sender IN ('$usrRows') OR receiver = '$user' ORDER BY time DESC");
+
+
+	}
+	else
+	{
+		echo "<br>user is not following anyone<br>";
+		$result2 = queryMysql_L("SELECT * FROM messages WHERE sender = '$user' OR receiver = '$user' ORDER BY time DESC");
+	}
+
+	// The user has relevant messages
+	if($result2->num_rows)
+	{
+		$num = $result2->num_rows;
+		echo "row count: $num<br>";
+
+		while ($row2 = $result2->fetch_array(MYSQLI_ASSOC))
+		{
+			$showOK = false;
+			// Message was sent to the user or user sent
+			if (($row2['sender'] === $user) || ($row2['receiver'] === $user))
+			{
+				$showOK = true;
+			}
+			// Public message
+			elseif ($row2['privacy'] === 0)
+			{
+				$showOK = true;
+			}
+
+
+			if ($showOK)
+			{
+				echo "<br>" . $row2['sender'] . ":" . $row2['receiver'] . ":" . $row2['privacy'] . ":" . $row2['time'] . ":" . $row2['message'];
+			}
+
+		}
+
+	}
+	else
+	{
+		echo "You don't have any relevant messages.";
+	}
+
+}
+
 ?>
