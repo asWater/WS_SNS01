@@ -11,12 +11,41 @@ echo "<br><span class='main'>Welcome to the backwoods, ";
 if ($loggedIn)
 {
 	showInformation_L($user);
-	echo "<div class='main'>";
-	echo "<br>";
-	echo "<span class='messageTitle'><p>Relevant Messages</p></span>";
-	echo "<table class='messageTab'>";
-	echo "<tr> <th>Sender</th><th>Reciever</th><th>Privacy</th><th>Date-Time</th><th>Message</th> </tr>";
+
+echo <<<_END
+	<div class='main'>
+
+		<br>
+		<span class='messageTitle'><p>Relevant Messages</p></span>
+
+		<div class='form-horizontal filterArea'>
+			<label class='col-sm-0 control-label'>Sender:</label>
+			<span class='col-sm-0 sender-filter-area'></span>
+			
+			<label class='col-sm-1 control-label'>Receiver:</label>
+			<span class='col-sm-1 receiver-filter-area'></span>
+			
+			<label class='col-sm-2 control-label'>Privacy:</label>
+			<span class='col-sm-2 privacy-filter-area'></span>
+
+			<label class='col-sm-3 control-label'>Message:</label>
+			<span class='col-sm-3 message-filter-area'></span>
+		</div>
+		
+		<table id='msgTbl' class='messageTab'>
+			<thead class='scrollHead'>
+				<tr> <th class='sender'>Sender</th>
+					 <th class='receiver'>Reciever</th>
+					 <th class='privacy'>Privacy</th>
+					 <th class='dateTime'>Date-Time</th>
+					 <th class='message'>Message</th>
+				</tr>
+			</thead>
+			<tbody class='scrollBody'>
+_END;
+	
 	showRelatedMessages_L($user);
+	echo "</tbody>";
 	echo "</table>";
 	echo "</div>";
 }

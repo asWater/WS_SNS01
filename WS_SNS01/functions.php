@@ -228,7 +228,14 @@ function showRelatedMessages_L($user)
 						break;
 				}
 
-				echo "<tr><td>" . $row2['sender'] . "</td><td>" . $row2['receiver'] . "</td><td>" . $row2['privacy'] . "</td><td>" . $row2['time'] . "</td><td>" . $row2['message'] . "</td></tr>";
+				//echo "<tr><td class='sender'>" . $row2['sender'] . "</td><td class='receiver'>" . $row2['receiver'] . "</td><td class='privacy'>" . $row2['privacy'] . "</td><td class='dateTime'>" . $row2['time'] . "</td><td class='message'>" . $row2['message'] . "</td></tr>";
+				echo <<<_END
+				<tr><td class='sender'>{$row2['sender']}</td>
+				<td class='receiver'>{$row2['receiver']}</td>
+				<td class='privacy'>{$row2['privacy']}</td>
+				<td class='dateTime'>{$row2['time']}</td>
+				<td class='message'>{$row2['message']}</td></tr>			
+_END;
 			}
 
 		}

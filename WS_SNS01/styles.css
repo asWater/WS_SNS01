@@ -96,7 +96,7 @@ li a, .button {text-decoration:none;}
 	box-shadow        :2px 2px 2px #888;
 */
 
-  display: inline;
+  display: inline-block;
   border-top: 1px solid #ccc;
   border-right: 1px solid #999;
   border-bottom: 1px solid #999;
@@ -225,6 +225,49 @@ input#submit_button:hover
 
 .gameTitle a:hover {color: darkorange;}
 
+
+.filterArea
+{
+  padding-left: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background: midnightblue;
+  margin-right: 40px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: steelblue;
+}
+
+.filterArea label, select, option
+{
+  font-size: 10px;
+}
+
+.filterArea select, option, input
+{
+  color: darkolivegreen;
+}
+
+.filterArea select, option
+{
+  width: 80px;
+}
+
+.filterArea label
+{
+  font-weight: bold;
+  color: gold;
+}
+
+.filterArea input
+{
+  width: 200px;
+  height: 10px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+
 .messageTab, .gameTab
 {
   border-width: 2px;
@@ -242,6 +285,7 @@ input#submit_button:hover
 .messageTab
 {
   border-color: midnightblue;
+  margin-right: 40px;
 }
 
 .messageTab th, .messageTab td,
@@ -285,6 +329,41 @@ input#submit_button:hover
 {
   text-align: left;
 }
+
+.messageTab th, .messageTab td
+{
+  table-layout: fixed;
+}
+
+.scrollHead, .scrollBody
+{
+  display: block;
+}
+
+.scrollBody
+{
+  overflow-y: scroll;
+  height: 300px;
+}
+
+.sender, .receiver
+{
+  width: 80px;
+}
+.privacy
+{
+  width: 50px;
+}
+.dateTime
+{
+  width: 100px;
+}
+.message
+{
+  width: 350px;
+}
+
+
 
 /* -----------------------
   左上角丸　最初の行の最初のセル
