@@ -211,6 +211,12 @@ input#submit_button:hover
   color: white;
 }
 
+.messageTitle
+{
+  color: midnightblue;
+  font-weight: bold;
+}
+
 .gameTitle a
 {
   color:gold;
@@ -219,7 +225,7 @@ input#submit_button:hover
 
 .gameTitle a:hover {color: darkorange;}
 
-.gameTab
+.messageTab, .gameTab
 {
   border-width: 2px;
   border-color: darkred;
@@ -233,8 +239,13 @@ input#submit_button:hover
   box-shadow: 0 1px 1px #CCC; 
 }
 
-.gameTab th,
-.gameTab td
+.messageTab
+{
+  border-color: midnightblue;
+}
+
+.messageTab th, .messageTab td,
+.gameTab th, .gameTab td
 {
   padding: 5px;
   border-width: 1px;
@@ -252,20 +263,35 @@ input#submit_button:hover
   /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;*/
 }
 
-.gameTab td
+.messageTab th
+{
+  border-color: midnightblue;
+  background: midnightblue;
+}
+
+.messageTab td, .gameTab td
 {
   color: darkolivegreen;
 }
 
+.messageTab td
+{
+  border-color: midnightblue;
+}
+
 /* border-radius -> 方向と垂直方向の半径の値を、左上・右上・右下・左下の順で指定します。 */
 
-
+.messageTab td:last-child
+{
+  text-align: left;
+}
 
 /* -----------------------
   左上角丸　最初の行の最初のセル
 ----------------------- */
 .gameTab tr:first-child th:first-child,
-.gameTab tr:first-child td:first-child {
+.gameTab tr:first-child td:first-child 
+{
     -webkit-border-radius: 6px 0 0 0;
        -moz-border-radius: 6px 0 0 0;
          -o-border-radius: 6px 0 0 0;

@@ -128,7 +128,7 @@ function showGameRanking($gameName, $sortDesc)
 				$r++;
 			}
 
-			echo "<tr><td>$r<td>" . $row['user'] . "</td><td>" . $row['score'] . "</td></tr>";
+			echo "<tr><td>$r</td><td>" . $row['user'] . "</td><td>" . $row['score'] . "</td></tr>";
 		}
 	}
 	else
@@ -139,7 +139,7 @@ function showGameRanking($gameName, $sortDesc)
 
 function showInformation_L($user)
 {
-	echo "$user, you are logged in.";
+	echo "$user, you are logged in.</span>";
 
 	$result = queryMysql_L("SELECT * FROM profiles WHERE user = '$user'");
 	if (!$result->num_rows)
@@ -166,22 +166,31 @@ function showRelatedMessages_L($user)
 	{
 		while ($row = $result->fetch_array(MYSQLI_ASSOC))
 		{
-			echo "val = " . $row['user'] . "<br>";
 			$usrRows[] = $row['user'];
 		}
 
 		//$myName = array('user' => $user);
 		array_push($usrRows, $user);	// Add myself to sender list.
 
-		print_r($usrRows);
+		$queryParam = "";
 
-		$result2 = queryMysql_L("SELECT * FROM messages WHERE sender IN ('$usrRows') OR receiver = '$user' ORDER BY time DESC");
+		for ($i = 0; $i < count($usrRows); $i++)
+		{
+			if ($i === (count($usrRows) - 1))
+			{
+				$queryParam = $queryParam . "'" . $usrRows[$i] . "'";
+			}
+			else
+			{
+				$queryParam = $queryParam . "'" . $usrRows[$i] . "',";
+			}
+		}
 
+		$result2 = queryMysql_L("SELECT * FROM messages WHERE sender IN ($queryParam) OR receiver = '$user' ORDER BY time DESC");
 
 	}
 	else
 	{
-		echo "<br>user is not following anyone<br>";
 		$result2 = queryMysql_L("SELECT * FROM messages WHERE sender = '$user' OR receiver = '$user' ORDER BY time DESC");
 	}
 
@@ -189,7 +198,6 @@ function showRelatedMessages_L($user)
 	if($result2->num_rows)
 	{
 		$num = $result2->num_rows;
-		echo "row count: $num<br>";
 
 		while ($row2 = $result2->fetch_array(MYSQLI_ASSOC))
 		{
@@ -200,7 +208,7 @@ function showRelatedMessages_L($user)
 				$showOK = true;
 			}
 			// Public message
-			elseif ($row2['privacy'] === 0)
+			if ($row2['privacy'] == 0)
 			{
 				$showOK = true;
 			}
@@ -208,7 +216,19 @@ function showRelatedMessages_L($user)
 
 			if ($showOK)
 			{
-				echo "<br>" . $row2['sender'] . ":" . $row2['receiver'] . ":" . $row2['privacy'] . ":" . $row2['time'] . ":" . $row2['message'];
+				switch ($row2['privacy'])
+				{
+					case 0:
+						$row2['privacy'] = "Public";
+						break;
+					case 1:
+						$row2['privacy'] = "Private";
+						break;
+					default:
+						break;
+				}
+
+				echo "<tr><td>" . $row2['sender'] . "</td><td>" . $row2['receiver'] . "</td><td>" . $row2['privacy'] . "</td><td>" . $row2['time'] . "</td><td>" . $row2['message'] . "</td></tr>";
 			}
 
 		}
