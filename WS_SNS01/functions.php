@@ -16,6 +16,7 @@ mysql_select_db($dbName) or die(mysql_error());
 
 $connection = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 if ($connection->connect_error) die($connection->connect_error);
+if (!$connection->set_charset("utf8")) die($connection->error);
 
 /**
  * [createTable_L description]
