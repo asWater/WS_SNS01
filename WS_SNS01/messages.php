@@ -64,7 +64,7 @@ _END;
 		echo "Message was deleted<br>";
 	}
 
-	$result = queryMysql_L("SELECT * FROM messages WHERE receiver='$view' ORDER BY time DESC");
+	$result = queryMysql_L("SELECT * FROM messages WHERE sender='$view' ORDER BY time DESC");
     $num    = $result->num_rows;
 
     for ($j = 0; $j < $num; $j++)
@@ -74,7 +74,7 @@ _END;
     	if ($row['privacy'] == 0 || $row['sender'] == $user || $row['receiver'] ==$user)
     	{
     		echo $row['time'] . "> ";
-    		echo "<a href='messages.php?view=" . $row['sender'] . "'>" . $row['sender']. "</a> ";
+    		echo "To: " . $row['receiver'] . " > " . $row['sender'] . " ";
 
     		if ($row['privacy'] == 0)	//Public Message.
     		{
@@ -85,7 +85,7 @@ _END;
     			echo "whispered: <span class='whisper'>&quot;" . $row['message'] . "&quot;</span> ";
     		}
 
-    		if ($row['receiver'] == $user)
+    		if ($row['sender'] == $user)
     		{
     			echo "[<a href='messages.php?view=$view&erase=" . $row['id'] . "'>erase</a>]";
     		}

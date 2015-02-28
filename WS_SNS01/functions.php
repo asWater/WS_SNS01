@@ -1,6 +1,7 @@
 <?php //functions.php
 
 define("SALTWORD", "!john#paul%george&ringo");
+define("NA", "N/A");
 
 $dbHost  = 'localhost';
 $dbName  = 'WSDB';
@@ -139,8 +140,6 @@ function showGameRanking($gameName, $sortDesc)
 
 function showInformation_L($user)
 {
-	echo "$user, you are logged in.</span>";
-
 	$result = queryMysql_L("SELECT * FROM profiles WHERE user = '$user'");
 	if (!$result->num_rows)
 	{
@@ -216,6 +215,8 @@ function showRelatedMessages_L($user)
 
 			if ($showOK)
 			{
+				$trHTML = "<tr>";
+
 				switch ($row2['privacy'])
 				{
 					case 0:
@@ -223,18 +224,41 @@ function showRelatedMessages_L($user)
 						break;
 					case 1:
 						$row2['privacy'] = "Private";
+						$trHTML = "<tr class='privRow'>";
 						break;
 					default:
 						break;
 				}
 
-				//echo "<tr><td class='sender'>" . $row2['sender'] . "</td><td class='receiver'>" . $row2['receiver'] . "</td><td class='privacy'>" . $row2['privacy'] . "</td><td class='dateTime'>" . $row2['time'] . "</td><td class='message'>" . $row2['message'] . "</td></tr>";
+				if ($row2['receiver'] === NA)
+				{
+					$trHTML = "<tr class='monoLog'>";
+				}
+
+				$senderLinkStartHTML = "";
+				$receiverLinkStartHTML = "";
+				$linkCloseHTML = "";
+
+				if ($row2['sender'] !== $user)
+				{
+					$senderLinkStartHTML = "<a href='messages.php?view=" . $row2['sender'] . "'>";
+					$linkCloseHTML = "</a>";
+				}
+				
+				if (($row2['receiver'] !== $user) && ($row2['receiver'] !== "N/A"))
+				{
+					$receiverLinkStartHTML = "<a href='messages.php?view=" . $row2['receiver'] . "'>";
+					$linkCloseHTML = "</a>";
+				}
+
 				echo <<<_END
-				<tr><td class='sender'>{$row2['sender']}</td>
-				<td class='receiver'>{$row2['receiver']}</td>
-				<td class='privacy'>{$row2['privacy']}</td>
-				<td class='dateTime'>{$row2['time']}</td>
-				<td class='message'>{$row2['message']}</td></tr>			
+				$trHTML
+					<td class='sender'>$senderLinkStartHTML{$row2['sender']}$linkCloseHTML</td>
+				   	<td class='receiver'>$receiverLinkStartHTML{$row2['receiver']}$linkCloseHTML</td>
+					<td class='privacy'>{$row2['privacy']}</td>
+					<td class='dateTime'>{$row2['time']}</td>
+					<td class='message'>{$row2['message']}</td>
+				</tr>			
 _END;
 			}
 

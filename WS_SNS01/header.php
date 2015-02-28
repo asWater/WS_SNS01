@@ -23,6 +23,7 @@ else
 echo <<<_END
 	<title>$appName$userStr</title>
 	<link rel='stylesheet' href='styles.css' type='text/css'>
+	<meta charset='UTF-8'>
 	</head>
 	<body>
 	<div class='appname'>$appName$userStr</div>

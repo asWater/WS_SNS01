@@ -53,11 +53,12 @@ if (isset($_POST['user']) && isset($_POST['game']) && isset($_POST['score']))
 		queryMysql_L("UPDATE gamescores SET score='$score' WHERE user='$user' AND game='$game'");
 		echo "New Record!";
 	}
+	/*
 	elseif ($shouldUpdate == false && $initialScore == false)
 	{
 		echo "No new record, Try again.";
 	}
-
+	*/
 
 }
 else

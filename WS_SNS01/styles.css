@@ -134,7 +134,7 @@ li a, .button {text-decoration:none;}
 .menu li a:visited {color: gold;}
 .menu li a:hover {color: darkorange;}
 
-input#submit_button
+input#submit_button, .postButton
 {
   border-top: 1px solid #ccc;
   border-right: 1px solid #999;
@@ -163,9 +163,9 @@ input#submit_button
  
 }
 
-input#submit_button:hover
+input#submit_button:hover, .postButton:hover
 {
-  color: darkorange;
+  color: darkred;
 }
 
 
@@ -238,17 +238,19 @@ input#submit_button:hover
   border-color: steelblue;
 }
 
-.filterArea label, select, option
+.filterArea label, .filterArea select, .filterArea option
 {
   font-size: 10px;
 }
 
-.filterArea select, option, input
+/*
+.filterArea select, .filterArea option, .filterArea input
 {
   color: darkolivegreen;
 }
+*/
 
-.filterArea select, option
+.filterArea select, .filterArea option
 {
   width: 80px;
 }
@@ -271,7 +273,7 @@ input#submit_button:hover
 .messageTab, .gameTab
 {
   border-width: 2px;
-  border-color: darkred;
+  border-color: midnightblue;
   border-style: solid;
   border-spacing: 0;
   border-collapse: separate;
@@ -284,7 +286,6 @@ input#submit_button:hover
 
 .messageTab
 {
-  border-color: midnightblue;
   margin-right: 40px;
 }
 
@@ -293,7 +294,7 @@ input#submit_button:hover
 {
   padding: 5px;
   border-width: 1px;
-  border-color: darkred;
+  border-color: midnightblue;
   border-style: solid;
   border-collapse: collapse;
   text-align: center;
@@ -301,15 +302,8 @@ input#submit_button:hover
   font-size: 12px;
 }
 
-.gameTab th
+.messageTab th, .gameTab th
 {
-  background: darkred;
-  /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;*/
-}
-
-.messageTab th
-{
-  border-color: midnightblue;
   background: midnightblue;
 }
 
@@ -318,10 +312,6 @@ input#submit_button:hover
   color: darkolivegreen;
 }
 
-.messageTab td
-{
-  border-color: midnightblue;
-}
 
 /* border-radius -> 方向と垂直方向の半径の値を、左上・右上・右下・左下の順で指定します。 */
 
@@ -333,6 +323,21 @@ input#submit_button:hover
 .messageTab th, .messageTab td
 {
   table-layout: fixed;
+}
+
+.privRow td
+{
+  color: hotpink;
+}
+
+.monoLog td
+{
+  color: mediumblue;
+}
+
+.messageTab a
+{
+  font-size: 12px;
 }
 
 .scrollHead, .scrollBody
@@ -536,7 +541,7 @@ input#submit_button:hover
 .tableExplain
 {
   font-weight: bold;
-  color: darkred;
+  color: midnightblue;
   margin-bottom: 2px;
 }
 

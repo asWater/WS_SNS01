@@ -14,7 +14,7 @@ function scoreUpdate(user, gameName, score)
 		{
 			if (this.status == 200)	// HTTP status: 200 = OK.
 			{
-				if (this.responseText != null)	// Text data replied by the server.
+				if (this.responseText != "")	// Text data replied by the server.
 				{
 					alert(this.responseText);
 				}

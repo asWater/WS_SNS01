@@ -10,7 +10,23 @@ echo "<br><span class='main'>Welcome to the backwoods, ";
 
 if ($loggedIn)
 {
+	echo "$user, you are logged in.</span>";
 	showInformation_L($user);
+
+	if (isset($_POST['text']))
+	{
+		$text = sanitizeString_L($_POST['text']);
+
+		if ($text != "")
+		{
+			$privacy = 0;
+			$view = NA;
+			$time = currentDateTime_L();
+
+			queryMysql_L("INSERT INTO messages (sender, receiver, privacy, time, message) VALUES ('$user', '$view', '$privacy', '$time', '$text')");
+
+		}
+	}
 
 echo <<<_END
 	<div class='main'>
@@ -45,9 +61,21 @@ echo <<<_END
 _END;
 	
 	showRelatedMessages_L($user);
-	echo "</tbody>";
-	echo "</table>";
-	echo "</div>";
+	
+	echo <<<_END
+			</tbody>
+		</table>
+		
+		<br>
+		<span class='messageTitle'><p>Monology</p></span>
+		<form method='post' action='index.php'>
+			<textarea class='messageText' name='text' cols='40' rows='3'></textarea>
+			<br>
+		    <input id='submit_button' type='submit' value='Post Message'>
+	    </form>
+	    <br>
+	</div>
+_END;
 }
 else
 {
