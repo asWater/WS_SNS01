@@ -64,8 +64,9 @@ function sanitizeString_L($var)
 	global $connection;
 	$var = strip_tags($var);	//指定した文字列 (str) から全ての NUL バイトと HTML および PHP タグを取り除きます
 	var_dump("After strip_tag: ", $var);
-	$var = htmlentities($var);	//この関数はhtmlspecialchars()と同じですが、 HTML エンティティと等価な意味を有する文字をHTMLエンティティに変換します。
-								// e.g. <b>bold</b> -> &lt;b&gt;bold&lt;/b&gt
+	// If there is no "UTF-8" encoding parameter, it might be the cause of MOJIBAKE depends on PHP version.
+	$var = htmlentities($var, ENT_QUOTES, "UTF-8");	//この関数はhtmlspecialchars()と同じですが、 HTML エンティティと等価な意味を有する文字をHTMLエンティティに変換します。
+													// e.g. <b>bold</b> -> &lt;b&gt;bold&lt;/b&gt
 	var_dump("After htmlentities: ", $var);
 	$var = stripslashes($var);	//バックスラッシュでクォートされた文字列を元に戻す. "It\'s mine." -> It's mine.
 	var_dump("After stripslas: ", $var);
