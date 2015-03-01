@@ -13,8 +13,10 @@ $result = queryMysql_L("SELECT * FROM profiles WHERE user='$user'");
 
 if (isset($_POST['text']) && !empty($_POST['text']))
 {
+	var_dump("Before sanitize: ", $_POST['text']);
 	$profText = sanitizeString_L($_POST['text']);
 	$profText = preg_replace('/\s\s+/', ' ', $profText); // Replace consecutive spaces to 1 space. "\s" means space.
+	var_dump("After sanitize: ", $profText);
 
 	if ($result->num_rows)
 	{
