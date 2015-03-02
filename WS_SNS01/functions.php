@@ -291,8 +291,9 @@ function updatePassword_L($updUsr, $updPass)
 		if ($res->num_rows)
 		{
 			$updPass = hashPass_L($updPass);
+			$dt = currentDateTime_L();
 
-			queryMysql_L("UPDATE members SET pass='$updPass' WHERE user='$updUsr'");
+			queryMysql_L("UPDATE members SET pass='$updPass', modified='$dt' WHERE user='$updUsr'");
 		
 			echo "<h1><span class='info main'>Password for $updUsr was updated.</span></h1>";
 		}
