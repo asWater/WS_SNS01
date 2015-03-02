@@ -320,6 +320,17 @@ input#submit_button:hover, .postButton:hover
   text-align: left;
 }
 
+.maintMessageTab td:nth-last-child(2)
+{
+  text-align: left;
+}
+
+.maintMessageTab td:last-child
+{
+  text-align: center;
+}
+
+
 .messageTab th, .messageTab td
 {
   table-layout: fixed;
@@ -351,6 +362,7 @@ input#submit_button:hover, .postButton:hover
   height: 300px;
 }
 
+
 .sender, .receiver
 {
   width: 80px;
@@ -368,13 +380,21 @@ input#submit_button:hover, .postButton:hover
   width: 350px;
 }
 
+.maintMessageTab .message
+{
+  width: 280px;
+}
 
+.maintMessageTab .erase
+{
+  width: 80px;
+}
 
 /* -----------------------
   左上角丸　最初の行の最初のセル
 ----------------------- */
 .gameTab tr:first-child th:first-child,
-.gameTab tr:first-child td:first-child 
+.gameTab tr:first-child td:first-child
 {
     -webkit-border-radius: 6px 0 0 0;
        -moz-border-radius: 6px 0 0 0;

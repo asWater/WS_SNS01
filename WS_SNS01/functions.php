@@ -251,7 +251,7 @@ function showRelatedMessages_L($user)
 					$senderLinkStartHTML = "<a href='messages.php?view=" . $row2['sender'] . "'>";
 					$linkCloseHTML = "</a>";
 				}
-				
+
 				if (($row2['receiver'] !== $user) && ($row2['receiver'] !== "N/A"))
 				{
 					$receiverLinkStartHTML = "<a href='messages.php?view=" . $row2['receiver'] . "'>";
@@ -265,7 +265,7 @@ function showRelatedMessages_L($user)
 					<td class='privacy'>{$row2['privacy']}</td>
 					<td class='dateTime'>{$row2['time']}</td>
 					<td class='message'>{$row2['message']}</td>
-				</tr>			
+				</tr>
 _END;
 			}
 
@@ -274,7 +274,7 @@ _END;
 	}
 	else
 	{
-		echo "You don't have any relevant messages.";
+		echo "<span class='error'><p>You don't have any relevant messages.</p></span>";
 	}
 
 }

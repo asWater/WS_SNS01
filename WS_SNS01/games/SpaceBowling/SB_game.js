@@ -4,6 +4,8 @@ $(document).ready(function()
 
 	window.scrollTo(0,0);
 
+	const MAXSTAGE = 3;
+
 	var canvas = $("#gameCanvas");
 	var context = canvas.get(0).getContext("2d");
 
@@ -53,6 +55,7 @@ $(document).ready(function()
 	var powerY;
 
 	var score;
+	var stage = 1;
 
 	var deadAsteroids;
 
@@ -66,7 +69,10 @@ $(document).ready(function()
 	var uiPlay = $("#gamePlay");
 	var uiReset = $(".gameReset");
 	var uiRemaining = $("#gameRemaining");
+	var uiStageInfo = $("#stageInfo");
 	var uiScore = $(".gameScore");
+	var uiStage = $(".gameStage");
+	var uiStageNo = $(".stageNo");
 
 	var Asteroid = function(x, y, radius, mass, friction)
 	{
@@ -124,6 +130,7 @@ $(document).ready(function()
 	{
 		uiStats.hide();
 		uiComplete.hide();
+		uiStageInfo.hide();
 
 		uiPlay.click(function(e)
 		{
@@ -146,6 +153,8 @@ $(document).ready(function()
 
 			e.preventDefault();
 			uiComplete.hide();
+			score = 0;
+			stage = 1;
 			startGame();
 		});
 	};
@@ -153,6 +162,23 @@ $(document).ready(function()
 	// Reset and start the game
 	function startGame()
 	{
+		// Stage information
+		/*
+		uiStageNo.html("STAGE: " + String(stage));
+		uiStageInfo.fadeIn().queue(function()
+		{
+			setTimeout(function()
+			{
+				uiStageInfo.dequeue();
+			}, 1500);
+		});
+		uiStageInfo.fadeOut();
+		*/
+
+		uiStageNo.html("STAGE: " + String(stage));
+		uiStageInfo.show();
+		uiStageInfo.fadeOut(1500);
+
 		// Set up initial game settings
 		playGame = false;
 
@@ -195,7 +221,10 @@ $(document).ready(function()
 		powerX = -1;
 		powerY = -1;
 
-		score = 0;
+		if (stage == 1)
+		{
+			score = 0;
+		}
 
 		// Set rings
 		setRings();
@@ -204,7 +233,8 @@ $(document).ready(function()
 		uiRemaining.html(asteroids.length - 1);
 
 		// Show the staistics screen
-		uiScore.html("0");
+		uiScore.html(String(score));
+		uiStage.html(String(stage) + "/" + String(MAXSTAGE));
 		uiStats.show();
 
 		// Event listeners
@@ -584,18 +614,28 @@ $(document).ready(function()
 
 			if (remaining == 0)
 			{
-				// Game Finish.
-				playGame = false;
-				uiStats.hide();
+				if (stage == MAXSTAGE)
+				{
+					// Game Finish.
+					playGame = false;
+					uiStats.hide();
 
-				// Check & Update score to DB, if it is the Highest-Score.
-				scoreUpdate(user, "SpaceBowling", score);
+					// Check & Update score to DB, if it is the Highest-Score.
+					scoreUpdate(user, "SpaceBowling", score);
 
-				uiComplete.show();
+					uiComplete.show();
 
-				$(window).unbind("touchstart mousedown");
-				$(window).unbind("touchmove mousemove");
-				$(window).unbind("touchend mouseup");
+					$(window).unbind("touchstart mousedown");
+					$(window).unbind("touchmove mousemove");
+					$(window).unbind("touchend mouseup");
+				}
+				else
+				{
+					stage += 1;
+					uiStage.html(String(stage) + "/" + String(MAXSTAGE));
+					startGame();
+				}
+
 			};
 		};
 	};
