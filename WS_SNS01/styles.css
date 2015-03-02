@@ -75,9 +75,12 @@ li a, .button {text-decoration:none;}
   color      :blue;
 	border     :1px solid blue;
 	padding    :5px 10px;
-  margin-left: 20px;
 }
 
+.readonly
+{
+  background: lightsteelblue;
+}
 
 .member a:link {color: darkolivegreen;}
 .member a:visited {color: darkolivegreen;}

@@ -294,16 +294,16 @@ function updatePassword_L($updUsr, $updPass)
 
 			queryMysql_L("UPDATE members SET pass='$updPass' WHERE user='$updUsr'");
 		
-			echo "<h1><span class='info'>Password for $updUsr was updated.</span></h1>";
+			echo "<h1><span class='info main'>Password for $updUsr was updated.</span></h1>";
 		}
 		else
 		{
-			echo "<br><h1 class='error'>User to be updated are not found in the DB.</h1>";
+			echo "<br><h1 class='error main'>User to be updated are not found in the DB.</h1>";
 		}		
 	}
 	else
 	{
-		echo "<span class='error'>Not all fields are inputted!</span>";
+		echo "<span class='error main'>Not all fields are inputted!</span>";
 	}
 
 }

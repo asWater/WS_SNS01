@@ -96,6 +96,7 @@ echo <<<_END
 
 <span class='fieldname'>E-mail Address</span>
 <input type = 'text' class='inputfield' maxlength='255' name='email' value='$email' onkeyup='checkEmail_L(this)' onblur='checkEmail_L(this)'/><span id='emailInfo'></span><br>
+<br>
 _END;
 
 ?>

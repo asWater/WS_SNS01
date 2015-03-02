@@ -54,7 +54,7 @@ if (isset($_POST['updUsr']) && isset($_POST['updPass']))
 }
 else
 {
-	echo "<br><span class='error'>User or Pass to be updated should be specifiled.</span>";
+	echo "<br><span class='warning'>User or Pass to be updated should be specifiled.</span>";
 }
 
 
