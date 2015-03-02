@@ -19,6 +19,7 @@
 				   modified DATETIME,
 				   created DATETIME NOT NULL,
 				   lastlogin DATETIME,
+				   admin TINYINT(1) DEFAULT 0,
 				   INDEX(user(10)),
 				   INDEX(email(18))');
 

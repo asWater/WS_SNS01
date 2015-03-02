@@ -279,4 +279,33 @@ _END;
 
 }
 
+function updatePassword_L($updUsr, $updPass)
+{
+	if ($updUsr != "" && $updPass != "")
+	{
+		$updUsr = sanitizeString_L($updUsr);
+		$updPass = sanitizeString_L($updPass);
+
+		$res = queryMysql_L("SELECT * FROM members WHERE user='$updUsr'");
+
+		if ($res->num_rows)
+		{
+			$updPass = hashPass_L($updPass);
+
+			queryMysql_L("UPDATE members SET pass='$updPass' WHERE user='$updUsr'");
+		
+			echo "<h1><span class='info'>Password for $updUsr was updated.</span></h1>";
+		}
+		else
+		{
+			echo "<br><h1 class='error'>User to be updated are not found in the DB.</h1>";
+		}		
+	}
+	else
+	{
+		echo "<span class='error'>Not all fields are inputted!</span>";
+	}
+
+}
+
 ?>

@@ -13,7 +13,8 @@ if (isset($_GET['view']))
 	if ($view == $user)
 	{
 		$name = "Your";
-		echo "<p><a class='button' href='profile.php'>Edit Profile</a></p><br>";
+		echo "<br><a class='button' href='profile.php'>Edit Profile</a>";
+		echo "<a class='button' href='changePass.php'>Change Password</a><br>";
 	}
 	else
 	{

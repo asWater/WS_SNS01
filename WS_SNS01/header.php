@@ -9,6 +9,8 @@ require_once 'functions.php';
 
 $userStr = ' (Guest)';
 
+$usrAdmin = FALSE;
+
 if (isset($_SESSION['user']))
 {
 	$user = $_SESSION['user'];
@@ -36,24 +38,47 @@ _END;
 
 if ($loggedIn)
 {
-	echo "<br><ul class='menu'>" .
-		 "<li><a id='HomeLink1' href='index.php'>Home</a></li>" .
-		 "<li><a id='MemberLink' href='members.php'>Members</a></li>" .
-		 "<li><a id='FriendLink' href='friends.php'>Friends</a></li>" .
-		 "<li><a id='ProfLink' href='members.php?view=$user'>Profile</a></li>" .
-		 //"<li><a id='EditProfLink' href='profile.php'>Edit Profile</a></li>" .
-		 "<li><a id='GameLink' href='games/gameindex.html'>Games</a></li>" .
-		 "<li><a id='LogoutLink' href='logout.php'>Log out</a></li>" .
-		 "</ul><br>";
+	echo <<<_END
+		<br>
+		<ul class='menu'>
+			<li><a id='HomeLink1' href='index.php'>Home</a></li>
+			<li><a id='MemberLink' href='members.php'>Members</a></li>
+			<li><a id='FriendLink' href='friends.php'>Friends</a></li>
+			<li><a id='ProfLink' href='members.php?view={$user}'>Profile</a></li>
+			<li><a id='GameLink' href='games/gameindex.html'>Games</a></li>
+			<li><a id='LogoutLink' href='logout.php'>Log out</a></li>
+_END;
+
+	$res = queryMysql_L("SELECT admin FROM members WHERE user = '$user'");
+
+	if ($res->num_rows)
+	{
+		$auth = $res->fetch_array(MYSQLI_ASSOC);
+
+		if ($auth['admin'] == 1)
+		{
+			$usrAdmin = TRUE;
+			echo "<li><a id='adminLink' href='adminTask.php'>Admin</a></li>";
+		}
+	}
+	else
+	{
+		echo "Select steatement did not return anything during the admin check.";
+	}
+
 }
 else
 {
-	echo ("<br /><ul class='menu'>" .
-		  "<li><a id='HomeLink2' href='index.php'>Home</a></li>" .
-		  "<li><a id='SignupLink' href='signup.php'>Sign up</a></li>" .
-		  "<li><a id='LoginLink' href='login.php'>Log in</a></li>" .
-		  "</ul><br>");
-		  //"<span class='info'>&#8658; You must be logged in to View this page.</span><br><br>");
+	echo <<<_END
+		<br>
+		<ul class='menu'>
+			<li><a id='HomeLink2' href='index.php'>Home</a></li>
+			<li><a id='SignupLink' href='signup.php'>Sign up</a></li>
+			<li><a id='LoginLink' href='login.php'>Log in</a></li>
+_END;
 }
+
+
+echo "</ul><br>";
 
 ?>

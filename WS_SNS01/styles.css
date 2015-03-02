@@ -75,8 +75,9 @@ li a, .button {text-decoration:none;}
   color      :blue;
 	border     :1px solid blue;
 	padding    :5px 10px;
-  margin-left:40px;
+  margin-left: 20px;
 }
+
 
 .member a:link {color: darkolivegreen;}
 .member a:visited {color: darkolivegreen;}
@@ -330,11 +331,22 @@ input#submit_button:hover, .postButton:hover
   text-align: center;
 }
 
+.usrTab td:last-child
+{
+  text-align: center;
+}
 
 .messageTab th, .messageTab td
 {
   table-layout: fixed;
 }
+
+/*
+.usrTab th, .usrTab td
+{
+  table-layout: auto;
+}
+*/
 
 .privRow td
 {
@@ -389,6 +401,25 @@ input#submit_button:hover, .postButton:hover
 {
   width: 80px;
 }
+
+
+.usrTab .user
+{
+  width: 100px;
+}
+.usrTab .email
+{
+  width: 120px;
+}
+.usrTab .modified, .usrTab .created, .usrTab .lastlogin
+{
+  width: 120px;
+}
+.usrTab .admin
+{
+  width: 50px;
+}
+
 
 /* -----------------------
   左上角丸　最初の行の最初のセル
