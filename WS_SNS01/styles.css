@@ -273,7 +273,6 @@ input#submit_button:hover, .postButton:hover
   border-radius: 10px;
 }
 
-
 .messageTab, .gameTab
 {
   border-width: 2px;
@@ -351,14 +350,24 @@ input#submit_button:hover, .postButton:hover
 }
 */
 
-.privRow td
+.privRow td, .privRow a
 {
   color: hotpink;
 }
 
-.monoLog td
+.monoLog td, .monoLog a
 {
   color: mediumblue;
+}
+
+.privRow a:hover, .monoLog a:hover
+{
+  color: darkred;
+}
+
+.toMeMsg td, .toMeMsg a
+{
+  background: lightcyan;
 }
 
 .messageTab a

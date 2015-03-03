@@ -223,6 +223,7 @@ function showRelatedMessages_L($user)
 			if ($showOK)
 			{
 				$trHTML = "<tr>";
+				$privMsg = false;
 
 				switch ($row2['privacy'])
 				{
@@ -231,7 +232,8 @@ function showRelatedMessages_L($user)
 						break;
 					case 1:
 						$row2['privacy'] = "Private";
-						$trHTML = "<tr class='privRow'>";
+						//$trHTML = "<tr class='privRow'>";
+						$privMsg = true;
 						break;
 					default:
 						break;
@@ -240,6 +242,22 @@ function showRelatedMessages_L($user)
 				if ($row2['receiver'] === NA)
 				{
 					$trHTML = "<tr class='monoLog'>";
+				}
+				elseif ($row2['receiver'] === $user)
+				{
+					if($privMsg)
+					{
+						$trHTML = "<tr class='privRow toMeMsg'>";
+					}
+					else
+					{
+						$trHTML = "<tr class='toMeMsg'>";
+					}
+				}
+				// The sender is $user and private message.
+				elseif ($privMsg)
+				{
+					$trHTML = "<tr class='privRow'>";
 				}
 
 				$senderLinkStartHTML = "";
