@@ -33,7 +33,7 @@ echo <<<_END
 _END;
 
 
-$res = queryMysql_L("SELECT user, email, modified, created, lastlogin, admin FROM members");
+$res = queryMysql_L("SELECT user, email, modified, created, lastlogin, admin FROM members ORDER BY lastlogin DESC");
 
 if ($res->num_rows)
 {
